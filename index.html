@@ -12,7 +12,7 @@
 <body>
 
     <h1>Lacaphe Home Page</h1>
-<p> Testing dev....</p>
+    <p> Testing dev....</p>
 
     <!--This is where the top half of the website reside. It Contains the logo of the site, nav bad, and shop photo as background.-->
     <!-- Work in progress and subject to be changed. -->
@@ -24,9 +24,15 @@
             <ul class="nav-bar">
                 <li>ABOUT</li>
                 <li>ORDER</li>
-                <li>DRINKS</li>
+                <li>
+                    <a class="nav-bar-link" href="/drinks"><p>DRINKS</p></a>
+                </li>
                 <li>CONNECT</li>
-                <li>SOCIAL MEDIA</li>
+                <li>
+                    <!--Make all the buttons in the nav bar this way to be able to make a smooth button animation for each of them-->
+                    <!--<a> element w/ <p> element inside; <a> element is a part of the nav-bar-link class--> 
+                    <a class="nav-bar-link" href="/social-media"><p>SOCIAL MEDIA</p></a>
+                </li>
                 <!--using a logo to connect like showen in Figma mockup -->
             </ul>
         </div>

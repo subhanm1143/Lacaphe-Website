@@ -29,5 +29,20 @@ img {
     height: 80px;
 }
 .nav-bar, li {
-    color: white
+    color: white;
 }
+
+.nav-bar-link {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-bar-link p {
+    margin: 0px;
+    transition: transform 0.3s ease; 
+}
+
+.nav-bar-link:hover p {
+    transform: scale(0.9);
+}
+

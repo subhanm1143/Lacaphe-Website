@@ -2,9 +2,18 @@ const express = require('express');
 const app = express();
 const port = 3000; 
 
-
+app.use(express.static("./")); // I can't run the website properly without this line
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
+});
+app.get('/about', (req, res) => {
+  res.sendFile(__dirname + '/about.html');
+});
+app.get('/order', (req, res) => {
+  res.sendFile(__dirname + '/order.html');
+});
+app.get('/drinks', (req, res) => {
+  res.sendFile(__dirname + '/drinks.html');
 });
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
@@ -14,7 +23,7 @@ app.listen(port, () => {
 var mysql = require('mysql2')
 var con = mysql.createConnection({
   host: "localhost",
-  user: "root",
+  user: "liberio", // On the real server, we should make a separate user account with sufficient privileges as opposed to using the root account
   password: "DemBoys"
 });
 

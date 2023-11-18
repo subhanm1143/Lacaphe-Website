@@ -1,0 +1,105 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---- Header Start ------ */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    background-color: #1f2937;
+    height: 450px; /* This value determines the height of the hero section, idk if this should be as high as the home page's*/
+}
+
+.top {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 3%;
+}
+.nav-bar {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+}
+.logo {
+    width: 80px;
+    height: 80px;
+}
+.nav-bar, li {
+    color: white;
+}
+
+.nav-bar-link {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-bar-link p {
+    margin: 0px;
+    transition: transform 0.3s ease; 
+}
+
+.nav-bar-link:hover p {
+    transform: scale(0.9);
+}
+
+/* ---- Header End ------ */
+
+/* ------ Hero Section Start ------*/
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero-title {
+    color: white;
+}
+
+
+/* ------ Hero Section End ------*/
+
+
+
+/* ----- Footer Start -----*/
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding-left: 50px;
+    margin: 0;
+}
+
+.footer-right {
+    display: flex; 
+    align-items: center;
+    padding-right: 20px;
+}
+.footer-right img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-right p {
+    text-decoration: none;
+    color: white; 
+    padding-right: 10px;
+}
+
+.container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+}
+
+/* ------ Footer End ------- */
+

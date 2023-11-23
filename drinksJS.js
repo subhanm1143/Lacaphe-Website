@@ -1,12 +1,22 @@
 // Get all category buttons
 const categories = document.querySelectorAll('.category');
 const coffeeBtn = document.getElementById('coffee-btn');
+const drinkDisplay = document.getElementById('drink-display');
 let isCoffeeSelected = false;
 let isTeaSelected = false;
 let isOtherSelected = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     selectCategory(coffeeBtn);
+    fetch('/drinks/list')
+        .then(response => response.json())
+        .then(items => {
+            items.forEach(item => {
+                console.log(item.name, item.image, item.price, item.type);
+                                
+            });
+        })
+        .catch(error => console.error('Error:', error));
 })
 
 /**
@@ -20,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
  * @param {*} selected 
  */
 function selectCategory(selected) {
-     
     categories.forEach(category => {
         category.classList.remove('selected');
     });
 
     selected.classList.add('selected');
+    console.log("button clicked");
 }
 
 

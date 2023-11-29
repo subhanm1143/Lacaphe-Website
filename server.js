@@ -21,13 +21,18 @@ con.connect(function(err) {
     console.log("Test table dropped if it exits");
   })
 
+  // 's' = signature drinks, 'c' = coffee, 't' = tea, 'i' = ice blended
   var tablesql = "CREATE TABLE testtable(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), image VARCHAR(255), price DECIMAL(5,2), type VARCHAR(2))"
   con.query(tablesql, function (err){
     if (err) throw err;
     console.log("Test table created");
   })
 
-  var insertsql = "INSERT INTO testtable (name, image,price,type) VALUES('boba tea','https://www.unionsquareawards.org/wp-content/uploads/2019/09/images3904-5d882e0c1594c.jpg',2.50,'t'),('lychee Tea','https://s3-media0.fl.yelpcdn.com/bphoto/Z0nZF9zYTaMVT5nbbGuxDA/o.jpg',3.75, 't');"
+  var insertsql = "INSERT INTO testtable (name, image,price,type) VALUES('boba tea','https://www.unionsquareawards.org/wp-content/uploads/2019/09/images3904-5d882e0c1594c.jpg',2.50,'t'),"
+                    +"('lychee Tea','https://s3-media0.fl.yelpcdn.com/bphoto/Z0nZF9zYTaMVT5nbbGuxDA/o.jpg',3.75, 't'),"
+                    +"('Test Coffee','https://images.immediate.co.uk/production/volatile/sites/30/2020/08/flat-white-3402c4f.jpg?quality=90&webp=true&resize=500,454',5.00, 'c'),"
+                    +"('Signature Meme Drink', 'http://1.bp.blogspot.com/-JFw1MGN5OoM/UD-BpCdlxzI/AAAAAAAAEMQ/brNZEjdhZWU/s1600/Lychee%2BMartini%2B3fc.jpg', 5.00, 's'),"
+                    +"('Ice Blended Drink', 'https://www.gfbfood.com.my/wp-content/uploads/2020/03/Untitled-design-1.jpg', 2.75, 'i');"
   con.query(insertsql, function (err){
     if (err) throw err;
     console.log("Test table filled");
@@ -58,13 +63,17 @@ app.get('/drinks', (req, res) => {
   res.sendFile(__dirname + '/drinks.html');
 });
 app.get('/drinks/list', (req, res) => {
-  con.query('SELECT * FROM testtable', (err, result) => {
+  let type = req.query.type;
+  // console.log(type);
+  con.query('SELECT * FROM testtable WHERE type = ?', [type], (err, result) => {
     if (err) {
       res.status(500).send('Database Error :(');
+      console.error(err);
+      return;
     }
     res.json(result);
   });
-})
+});
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

@@ -11,19 +11,19 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/PAGES'));
 
 
-
+//test
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  // Render 'index.ejs' from the 'views' folder
+ 
   res.render('index.ejs');
 });app.get('/about', (req, res) => {
-  // Render 'index.ejs' from the 'views' folder
+  
   res.render('about.ejs');
 });
 app.get('/login', (req, res) => {
-  // Render 'index.ejs' from the 'views' folder
+  
   res.render('login.ejs');
 });
 app.listen(port, () => {

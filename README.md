@@ -1,5 +1,5 @@
 
-# Lacaphe Website ![Lacaphe](/ICONS/logo.png)
+<img src="https://raw.githubusercontent.com/PieCodeing/Lacaphe-Website/develop/ICONS/logo.png" width="50%" height="50%">
 
 Lacàphê serves as a sanctuary for coffee and tea enthusiasts in San Jose, California, specializing in authentic Vietnamese beverages as well as Boba tea. The café not only offers an array of unique drinks like Egg Coffee and Eggspresso Hanoi but also provides a bustling atmosphere that resonates with the local community. It is a destination popular for those who seek variety in their caffeinated experiences.
 
@@ -27,7 +27,7 @@ The website will serve as a valuable online presence, offering information about
 ![Lacaphe](/PHOTOS/figma2.png)
 
 ## Entity Relationship Diagram (ERD)
-![Lacaphe](/PHOTOS/ERD.png)
+![Lacaphe](/PHOTOS/ERD.jpg)
 
 ## Technologies 
 
@@ -70,3 +70,30 @@ Costing $71.89 per month
 (WIP)
 
 ## Timeline
+
+**Sprint 02**
+
+We used this sprint to setup project on Jira/Github and begin some light coding. Also we used this sprint to familiarize ourselves with the workflow and how to use Jira and Github.
+
+- Created Github Repo
+- Testing commits
+- Deciding on environment and tech stack
+
+**Sprint 03**
+
+The goal of this sprint is to being developing the website. Everyone will be assigned positions/which part of the project they will be working on.
+
+- Pages were created
+- Setting up servers and database
+
+**Sprint 04**
+
+Our goal this sprint is to continue development and have a rough prototype to present it to the product owner/University.
+
+- Testing database
+- Page refinement
+- Refactor repo
+
+**Sprint 05 and on**
+
+We are going to continue coding the website and gain an understanding on how to use API's for our project. Since we are going to be refining the website as the sprints go on, we are going to work closer with client to get more feedback on the website and make sure it's to their liking.

@@ -1,10 +1,32 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const db = require('./database'); // Importing the database module
+const db = require('./DataBase/database.js'); // Importing the database module
 
+app.use(express.static("./")); // I can't run the website properly without this line
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/PAGES/index.html');
+});
+app.get('/about', (req, res) => {
+  res.sendFile(__dirname + '/PAGES/about.html');
+});
+app.get('/order', (req, res) => {
+  res.sendFile(__dirname + '/PAGES/order.html');
+});
+app.get('/drinks', (req, res) => {
+  res.sendFile(__dirname + '/PAGES/drinks.html');
+});
+app.get('/drinks/list', (req, res) => {
+  let type = req.query.type;
+  // console.log(type);
+  db.getCon().query('SELECT * FROM testtable WHERE type = ?', [type], (err, result) => {
+    if (err) {
+      res.status(500).send('Database Error :(');
+      console.error(err);
+      return;
+    }
+    res.json(result);
+  });
 });
 
 app.listen(port, () => {

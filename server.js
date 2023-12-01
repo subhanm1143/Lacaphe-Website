@@ -1,9 +1,20 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const db = require('./DATABASE/database'); 
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'STYLES')))
+app.use(express.static(path.join(__dirname, 'PHOTOS')))
+app.use(express.static(path.join(__dirname, 'ICONS')))
+// Set the view engine to ejs
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/PAGES'));
 
 
-app.use(express.static("./")); // I can't run the website properly without this line
+
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
   // Render 'index.ejs' from the 'views' folder
   res.render('index.ejs');
@@ -15,7 +26,6 @@ app.get('/login', (req, res) => {
   // Render 'index.ejs' from the 'views' folder
   res.render('login.ejs');
 });
-
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
@@ -27,10 +37,11 @@ db.connectToDatabase(function(err) {
     return;
   }
 
-  // Setup the database
+  // If connection is successful, proceed to set up the database
   db.setupDatabase(function(err) {
     if (err) {
       console.error("Failed to setup database:", err);
+      return;
     }
   });
 });

@@ -10,7 +10,7 @@ body {
     background-color: #1f2937;
     width: auto;
     height: 400px;
-    padding-top: 7%;
+    padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top*/
 }
 .nav-bar {
     list-style-type: none;
@@ -39,6 +39,8 @@ body {
     transform: scale(0.9);
 }
 
+/* --------- Footer Start --------- */
+
 footer {
     background-color: #000;
     color: #fff;
@@ -62,10 +64,20 @@ footer {
 }
 
 .footer-right p {
+    margin-bottom: 20px;
+    text-align: left;
     text-decoration: none;
     color: white; 
     padding-right: 10px;
+    font-family: Georgia, sans-serif; /* Change font-family */
+    line-height: 1.5; /* Increase line height */
 }
+
+.map-footer {
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+
 
  /* ----------for quote section below----------- */
 .quote-section {
@@ -133,3 +145,4 @@ footer {
 .qr-code {
     width: 50%;
 }
+

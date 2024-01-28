@@ -1,0 +1,195 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---- Header Start ------ */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    background-color: #1f2937;
+    height: 450px; /* This value determines the height of the hero section, idk if this should be as high as the home page's*/
+}
+
+.top {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 3%;
+}
+.nav-bar {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+}
+.logo {
+    width: 80px;
+    height: 80px;
+}
+.nav-bar, li {
+    color: white;
+}
+
+.nav-bar-link {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-bar-link p {
+    margin: 0px;
+    transition: transform 0.3s ease; 
+}
+
+.nav-bar-link:hover p {
+    transform: scale(0.9);
+}
+
+/* ---- Header End ------ */
+
+/* ------ Hero Section Start ------*/
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    color: white;
+    text-align: center;
+    /* Add font-family here */
+}
+
+/* ------ Hero Section End ------*/
+
+/* ------- Category Start ------*/
+
+.drinks-section {
+    display: flex;
+    flex-direction: column;
+    background-color: chocolate;
+}
+
+#drink-categories { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100px;
+}
+
+.category {
+    /* margin: 20px 10%; */
+    margin: 10px 0px 10px 0px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer; 
+    /* border-radius: 5px; */
+    transition-duration: 200ms;
+}
+
+/*
+.category h2 {
+    border-bottom: 2px;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom-color: black;
+}
+*/
+
+.category:hover {
+    background-color: #fc9f3c;
+}
+
+.category.selected {
+    box-shadow: 0px 8px 0px 0px #000;
+}
+
+/* ------- Category End ------*/
+
+/* ------- Drink Display Start -----*/
+
+#drink-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    /* padding: 120px 70px 70px 120px; */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 200ms;
+    transition-property: all;
+    cursor: pointer;
+}
+
+.card:hover {
+    /*
+    padding: 10px;
+    border: 5px solid gray; 
+    border-radius: 10px;
+    */
+    transform: scale(1.20);
+}
+
+.card h2 {
+    margin: 15px 5px 5px 5px;
+}
+
+.card h3 {
+    margin: 5px;
+}
+
+/* ------- Drink Display End  ------*/
+
+
+
+/* ----- Footer Start -----*/
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding-left: 50px;
+    margin: 0;
+}
+
+.footer-right {
+    display: flex; 
+    align-items: center;
+    padding-right: 20px;
+}
+.footer-right img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-right p {
+    text-decoration: none;
+    color: white; 
+    padding-right: 10px;
+}
+
+.container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+}
+
+/* ------ Footer End ------- */
+

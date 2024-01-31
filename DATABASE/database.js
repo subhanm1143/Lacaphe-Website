@@ -27,19 +27,14 @@ function setupDatabase(err) {
     if (err) throw err;
     console.log("Test table dropped if it exits");
   })
-  createDrinkTable();
-}
-function createDrinkTable(){
+
   // 's' = signature drinks, 'c' = coffee, 't' = tea, 'i' = ice blended
   var tablesql = "CREATE TABLE testtable(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), image VARCHAR(255), price DECIMAL(5,2), type VARCHAR(2))"
   con.query(tablesql, function (err) {
     if (err) throw err;
     console.log("Test table created");
   })
-  populateDrinktable();
-}
 
-function populateDrinktable(){
   var insertsql = "INSERT INTO testtable (name, image,price,type) VALUES('boba tea','https://www.unionsquareawards.org/wp-content/uploads/2019/09/images3904-5d882e0c1594c.jpg',2.50,'t'),"
     + "('lychee Tea','https://s3-media0.fl.yelpcdn.com/bphoto/Z0nZF9zYTaMVT5nbbGuxDA/o.jpg',3.75, 't'),"
     + "('Test Coffee','https://images.immediate.co.uk/production/volatile/sites/30/2020/08/flat-white-3402c4f.jpg?quality=90&webp=true&resize=500,454',5.00, 'c'),"
@@ -49,9 +44,6 @@ function populateDrinktable(){
     if (err) throw err;
     console.log("Test table filled");
   })
-  selectFromDrinkTable();
-}
-function selectFromDrinkTable(){
   var getsql = "SELECT * from testtable"
   con.query(getsql, function (err, result) {
     if (err) console.log(err);
@@ -60,7 +52,6 @@ function selectFromDrinkTable(){
       console.log(data)
     }
   })
-
 }
 
 /**
@@ -76,7 +67,7 @@ function getCon() {
 }
 
 module.exports = {
-
   connectToDatabase, setupDatabase, getCon
 }
+
 

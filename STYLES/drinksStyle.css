@@ -169,6 +169,11 @@ footer {
     margin: 0;
 }
 
+.container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+}
 .footer-right {
     display: flex; 
     align-items: center;
@@ -180,15 +185,18 @@ footer {
 }
 
 .footer-right p {
+    margin-bottom: 20px;
+    text-align: left;
     text-decoration: none;
     color: white; 
     padding-right: 10px;
+    font-family: Georgia, sans-serif; /* Change font-family */
+    line-height: 1.5; /* Increase line height */
 }
 
-.container {
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; 
+.map-footer {
+    margin-top: 0;
+    padding-bottom: 10px;
 }
 
 /* ------ Footer End ------- */

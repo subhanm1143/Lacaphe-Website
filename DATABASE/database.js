@@ -22,25 +22,44 @@ function setupDatabase(err) {
   con.query("use lacaphedb")
   if (err) throw err;
 
-  var dropsql = "DROP TABLE IF EXISTS testtable"
+  var dropsql = "DROP TABLE IF EXISTS Drinks"
   con.query(dropsql, function (err) {
     if (err) throw err;
-    console.log("Test table dropped if it exits");
+    console.log("Drink table dropped if it exits");
+  })
+  var dropUserSql = "DROP TABLE IF EXISTS userLogin"
+  con.query(dropUserSql, function (err) {
+    if (err) throw err;
+    console.log("User table dropped if it exits");
   })
   createDrinkTable();
+  createUserLoginTable();
 }
 function createDrinkTable(){
   // 's' = signature drinks, 'c' = coffee, 't' = tea, 'i' = ice blended
-  var tablesql = "CREATE TABLE testtable(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), image VARCHAR(255), price DECIMAL(5,2), type VARCHAR(2))"
-  con.query(tablesql, function (err) {
+  var drinkTable = "CREATE TABLE Drinks(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), image VARCHAR(255), price DECIMAL(5,2), type VARCHAR(2))"
+  con.query(drinkTable, function (err) {
     if (err) throw err;
     console.log("Test table created");
   })
   populateDrinktable();
 }
+function createUserLoginTable(){
 
+  const userLoginTable = `
+  CREATE TABLE UserLogin (
+    uuid VARCHAR(36) PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+  )`;
+  con.query(userLoginTable, function (err) {
+    if (err) throw err;
+    console.log("User table created");
+  })
+
+}
 function populateDrinktable(){
-  var insertsql = "INSERT INTO testtable (name, image,price,type) VALUES('boba tea','https://www.unionsquareawards.org/wp-content/uploads/2019/09/images3904-5d882e0c1594c.jpg',2.50,'t'),"
+  var insertsql = "INSERT INTO Drinks (name, image,price,type) VALUES('boba tea','https://www.unionsquareawards.org/wp-content/uploads/2019/09/images3904-5d882e0c1594c.jpg',2.50,'t'),"
     + "('lychee Tea','https://s3-media0.fl.yelpcdn.com/bphoto/Z0nZF9zYTaMVT5nbbGuxDA/o.jpg',3.75, 't'),"
     + "('Test Coffee','https://images.immediate.co.uk/production/volatile/sites/30/2020/08/flat-white-3402c4f.jpg?quality=90&webp=true&resize=500,454',5.00, 'c'),"
     + "('Some Signature Drink', 'http://1.bp.blogspot.com/-JFw1MGN5OoM/UD-BpCdlxzI/AAAAAAAAEMQ/brNZEjdhZWU/s1600/Lychee%2BMartini%2B3fc.jpg', 5.00, 's'),"
@@ -52,7 +71,7 @@ function populateDrinktable(){
   selectFromDrinkTable();
 }
 function selectFromDrinkTable(){
-  var getsql = "SELECT * from testtable"
+  var getsql = "SELECT * from Drinks"
   con.query(getsql, function (err, result) {
     if (err) console.log(err);
     else {

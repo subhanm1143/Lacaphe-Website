@@ -1,0 +1,66 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body {
+    background-color: #555;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+header{
+    background-color: #1f2937;
+    padding: 75px;
+}
+#show-login{ /*login button style*/
+    scale: 4;
+    background-color: chocolate;
+    color: #1f2937;
+
+    border-style: inset;
+    border-color: darkorange;
+    border-radius: 7px;
+}
+#close-btn{
+    color: rgb(128, 8, 8);
+}
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+h2{
+    text-align: center;
+}
+
+.popup{
+    position: absolute;
+    border-style: solid;
+    border-color: darkorange;
+    border-radius: 5px;
+    top: -150%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.25);
+    background-color: chocolate;
+    transition: top 0ms ease-in-out 200ms,
+                opacity 200ms ease-in-out 0ms,
+                transform 20ms ease-in-out 0ms;
+}
+label{
+    background-color: rgb(15, 73, 197);
+    color:white;
+}
+.form{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#signin-btn{
+    align-self: center;
+}
+.popup.active{
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2);
+}

@@ -1,21 +1,68 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
 const app = express();
 const port = 3000;
-const db = require('./DataBase/database.js'); // Importing the database module
+const db = require('./DATABASE/database'); 
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'STYLES')))
+app.use(express.static(path.join(__dirname, 'PHOTOS')))
+app.use(express.static(path.join(__dirname, 'ICONS')))
+app.use(express.static(path.join(__dirname, 'COMPONENTS')))
+// Set the view engine to ejs
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/PAGES'));
 
-app.use(express.static("./")); // I can't run the website properly without this line
+app.use(express.json());
+//test
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/PAGES/index.html');
+ 
+  res.render('index.ejs');
+
+});app.get('/about', (req, res) => {
+  
+  res.render('about.ejs');
 });
-app.get('/about', (req, res) => {
-  res.sendFile(__dirname + '/PAGES/about.html');
+
+app.get('/login', (req, res) => {
+  
+  res.render('login.ejs');
 });
-app.get('/order', (req, res) => {
-  res.sendFile(__dirname + '/PAGES/order.html');
+app.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const userId = uuidv4();
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+
+    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?,?,?)";
+
+  
+    db.getCon().query(insertUserSql, [userId , email, hashedPassword], (err, result) => {
+      if (err) {
+        console.error('Error inserting new user:', err);
+        res.status(500).send('Error during registration');
+        return;
+      }
+
+      res.send('User registered successfully');
+    });
+
+  } catch (error) {
+    console.error('Error during registration:', error);
+    res.status(500).send('Error during registration');
+  }
 });
+
 app.get('/drinks', (req, res) => {
-  res.sendFile(__dirname + '/PAGES/drinks.html');
+  
+  res.render('drinks.ejs');
 });
+
 app.get('/drinks/list', (req, res) => {
   let type = req.query.type;
   let name = req.query.name;
@@ -23,11 +70,11 @@ app.get('/drinks/list', (req, res) => {
   let queryParams = [];
 
   if (type) {
-    query = 'SELECT * FROM testtable WHERE type = ?';
+    query = 'SELECT * FROM Drinks WHERE type = ?';
     queryParams = [type];
   } else if (name) {
     // Assuming the 'name' column in your database is the one to search by
-    query = 'SELECT * FROM testtable WHERE name LIKE ?';
+    query = 'SELECT * FROM Drinks WHERE name LIKE ?';
     queryParams = [`%${name}%`]; // Use LIKE for partial matches
   } else {
     res.status(400).send('Missing type or name query parameter');
@@ -44,9 +91,23 @@ app.get('/drinks/list', (req, res) => {
   });
 });
 
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-db.connectToDatabase(); // Establish connection to the database
-db.setupDatabase(); // Setup the database
+// Establish connection to the database
+db.connectToDatabase(function(err) {
+  if (err) {
+    console.error("Failed to connect to database:", err);
+    return;
+  }
+
+  // If connection is successful, proceed to set up the database
+  db.setupDatabase(function(err) {
+    if (err) {
+      console.error("Failed to setup database:", err);
+      return;
+    }
+  });
+});

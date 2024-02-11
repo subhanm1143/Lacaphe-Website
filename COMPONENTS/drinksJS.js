@@ -105,7 +105,7 @@ function refreshDisplaySection(type) {
             let spacer2 = document.createElement('div');
             spacer2.className = 'spacer';
             let closeBtn = document.createElement('img');
-            closeBtn.src = './photo-bank/x-symbol.svg'
+            closeBtn.src = 'x-symbol.svg';
             closeBtn.style.cssText = "cursor: pointer; margin-left: auto; margin-right: 10px;"
             closeBtn.style.width = '10px';
             closeBtn.style.height = '10px';

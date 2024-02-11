@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.css">
+    <title>Lacaphe's Website</title>
+</head>
+<!-- testing -->
+<body>
+    <!--This is where the top half of the website reside. It Contains the logo of the site, nav bad, and shop photo as background.-->
+    <div class="header">
+        <div class="top">
+            <ul>
+                <img class="logo" src="/placeholder-site-logo.jpeg"  alt= "Lacaphe Placeholder Logo">
+            </ul>
+            <ul class="nav-bar">
+                <li>
+                    <a class="nav-bar-link" href="/about">
+                        <p>ABOUT</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-bar-link" href="/order">
+                        <p>ORDER</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-bar-link" href="/drinks">
+                        <p>DRINKS</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-bar-link" href="https://lacaphe.carrd.co/">
+                        <p>CONNECT</p>
+                    </a>
+                </li>
+                <li>
+                    <!--Make all the buttons in the nav bar this way to be able to make a smooth button animation for each of them-->
+                    <!--<a> element w/ <p> element inside; <a> element is a part of the nav-bar-link class-->
+                    <a class="nav-bar-link" href="/social-media">
+                        <p>SOCIAL MEDIA</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-bar-link" href="/login">
+                        <p>LOGIN</p>
+                    </a>
+                </li>
+                <!--using a logo to connect like showen in Figma mockup -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- This is the div with the quote section that also leads to the "Get to Know us" or "About" page. -->
+    <div class="quote-section">
+        <p>Add a quote/mission here</p>
+        <button>Get To Know Us</button>
+    </div>
+
+    <!-- This div displays the 6 pictures  -->
+    <div class="photo-collection">
+        <div class="container">
+            <img class="photo" src="/daan-evers-tKN1WXrzQ3s-unsplash.jpg" alt="">
+            <img class="photo" src="/kris-atomic-3b2tADGAWnU-unsplash.jpg" alt="">
+            <img class="photo" src="/nathan-dumlao-Y3AqmbmtLQI-unsplash.jpg" alt="">
+            <img class="photo" src="/nathan-dumlao-zUNs99PGDg0-unsplash.jpg" alt="">
+            <img class="photo" src="/sincerely-media-VNsdEl1gORk-unsplash.jpg" alt="">
+            <img class="photo" src="/tony-lee-8IKf54pc3qk-unsplash.jpg" alt="">
+        </div>
+    </div>
+
+    <!-- Displays the featured drinks in this div  -->
+    <div class="featured-section">
+        <h2 class="title">Featured Drinks</h2>
+        <div class="featured-row">
+
+            <div class="featured-column">
+                <a href="">
+                    <div class="card">
+                        <img src="./photo-bank/LACAPHEPIC2.jpg" alt="" class="card-img">
+                        <div class="card-text">
+                            <h2>Drink name</h2>
+                            <p>Brief product description</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="featured-column">
+                <a href="">
+                    <div class="card">
+                        <img src="./photo-bank/LACAPHEPIC2.jpg" alt="" class="card-img">
+                        <div class="card-text">
+                            <h2>Drink name</h2>
+                            <p>Brief product description</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="featured-column">
+                <a href="">
+                    <div class="card">
+                        <img src="./photo-bank/LACAPHEPIC2.jpg" alt="" class="card-img">
+                        <div class="card-text">
+                            <h2>Drink name</h2>
+                            <p>Brief product description</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="featured-column">
+                <a href="">
+                    <div class="card">
+                        <img src="./photo-bank/LACAPHEPIC2.jpg" alt="" class="card-img">
+                        <div class="card-text">
+                            <h2>Drink name</h2>
+                            <p>Brief product description</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="featured-column">
+                <a href="">
+                    <div class="card">
+                        <img src="./photo-bank/LACAPHEPIC2.jpg" alt="" class="card-img">
+                        <div class="card-text">
+                            <h2>Drink name</h2>
+                            <p>Brief product description</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- QR Code div & Order button -->
+    <div class="order-online-section">
+        <div class="oos-title-div">
+            <p class="oos-title">IN-STORE PICKUP! ORDER AHEAD AND SKIP THE LINE!</p>
+            <button class="oos-btn">ORDER HERE</button>
+        </div> 
+        <div class="qr-code">QR Code goes here</div>
+    </div>
+    <script defer src="script.js"></script>
+    <footer>
+        <div class="container">
+            <p>740 Story Rd #5, San Jose, CA 95122<br>+1(408) 564-6237<br></p>
+            
+            <div class="footer-right">
+                <!--Social Media Links added-->   
+                <a class="nav-bar-link" href="https://www.yelp.com/biz/lac%C3%A0ph%C3%AA-san-jose"><p><img src="./iconsYelp.png" alt="Yelp"></p></a>
+                <a class="nav-bar-link" href="https://www.facebook.com/lacaphe.sj/"><p><img src="./iconsFacebook.png" alt="Facebook"></p></a>
+                <a class="nav-bar-link" href="https://www.tiktok.com/@lacaphesj?lang=en"><p><img src="./iconsTikTok.png" alt="TikTok"></p></a>
+                <a class="nav-bar-link" href="https://www.instagram.com/lacaphe.sj/?hl=en"><p><img src="./iconsInstagram.png" alt="Instagram"></p></a>
+                
+            </div>
+        </div>
+    </footer>
+    <footer class="map-footer">
+        <div class="container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25380.643466810565!2d-121.89502821023045!3d37.32876500769921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808e33ffa1db20cd%3A0x34da9e6455994d08!2zTGFjw6BwaMOq!5e0!3m2!1sen!2sus!4v1701291087332!5m2!1sen!2sus" width="900" height="200" style="border: 1px solid #ccc; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="footer-right">
+                <p>Monday       Closed
+                <br>Tuesday     9:00 am - 6:00 pm 
+                <br>Wednesday   9:00 am - 6:00 pm
+                <br>Thursday    9:00 am - 6:00 pm 
+                <br>Friday      9:00 am - 6:00 pm 
+                <br>Saturday    9:00 am - 7:00 pm 
+                <br>Sunday      9:00 am - 7:00 pm </p>
+
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

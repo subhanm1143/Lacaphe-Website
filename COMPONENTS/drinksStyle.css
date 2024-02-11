@@ -7,13 +7,88 @@ body {
     flex-direction: column;
 }
 
+
+/* ---- Popup Start ------ */
+
+@keyframes slideDown {
+    from {
+        height: 0%
+    } 
+    to {
+        height: 100%
+    }
+}
+
+#popup-bg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: slideDown 0.5s ease-out forwards;
+}
+
+#popup {
+    width: auto;
+    min-height: 5%;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+#desc-text {
+    height: 100%;
+    width: 100%;
+    background-color: #1f2937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#popup p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 15px 15px 5px 15px;
+}
+
+/* 
+#popup-text {
+    font-size: 20px;
+}
+*/
+
+#desc-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#desc-box {
+    background-color: #1f2937;
+}
+
+/* ---- Popup End ------ */
+
 /* ---- Header Start ------ */
 
 .header {
     display: flex;
     flex-direction: column;
     background-color: #1f2937;
-    height: 450px; /* This value determines the height of the hero section, idk if this should be as high as the home page's*/
+    height: 450px;
+    /* This value determines the height of the hero section, idk if this should be as high as the home page's*/
 }
 
 .top {
@@ -22,16 +97,20 @@ body {
     width: 100%;
     padding-top: 3%;
 }
+
 .nav-bar {
     list-style-type: none;
     display: flex;
     gap: 30px;
 }
+
 .logo {
     width: 80px;
     height: 80px;
 }
-.nav-bar, li {
+
+.nav-bar,
+li {
     color: white;
 }
 
@@ -42,7 +121,7 @@ body {
 
 .nav-bar-link p {
     margin: 0px;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
 
 .nav-bar-link:hover p {
@@ -77,7 +156,7 @@ body {
     background-color: chocolate;
 }
 
-#drink-categories { 
+#drink-categories {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -91,7 +170,7 @@ body {
     font-size: 16px;
     background-color: transparent;
     border: none;
-    cursor: pointer; 
+    cursor: pointer;
     /* border-radius: 5px; */
     transition-duration: 200ms;
 }
@@ -170,10 +249,11 @@ footer {
 }
 
 .footer-right {
-    display: flex; 
+    display: flex;
     align-items: center;
     padding-right: 20px;
 }
+
 .footer-right img {
     width: 30px;
     height: 30px;
@@ -181,15 +261,14 @@ footer {
 
 .footer-right p {
     text-decoration: none;
-    color: white; 
+    color: white;
     padding-right: 10px;
 }
 
 .container {
     display: flex;
-    align-items: center; 
-    justify-content: space-between; 
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* ------ Footer End ------- */
-

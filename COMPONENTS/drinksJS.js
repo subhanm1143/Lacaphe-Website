@@ -32,6 +32,7 @@ const drinks = [sigDrinks, coffee, tea, iceBlended];
 let lastType;
 // let lastClicked;
 let allCards;
+let url;
 
 document.addEventListener('DOMContentLoaded', () => {
     selectButton(sigDrinks.button);
@@ -41,7 +42,7 @@ function refreshDisplaySection(type) {
     if (type !== lastType) {
         lastType = type;
         removeCards();
-        let url = '/drinks/list?type=' + encodeURIComponent(type);
+        url = '/drinks/list?type=' + encodeURIComponent(type);
         // let categorySelected = null;
         fetch(url)
             .then(response => response.json())
@@ -62,11 +63,77 @@ function refreshDisplaySection(type) {
      * chain.
      */
     function makeCardsClickable() {
+        let itemName;
+        let itemDescription;
+        /*
         allCards = document.getElementsByClassName('card');
         console.log(allCards.length);
         for (let i = 0; i < allCards.length; i++) {
             allCards[i].addEventListener('click', () => {
-                console.log("clicked!");
+                // console.log("clicked!");
+                createDescriptionPopup();
+            });
+        }
+        */
+
+        document.querySelectorAll('.card').forEach(function(card) {
+            card.addEventListener('click', function(event) {
+                itemName = this.querySelector('h2').textContent;
+                console.log('Item: ', itemName); // For debugging
+                createDescriptionPopup();
+            });
+        })
+
+        function createDescriptionPopup() {
+            let blackBackground = document.createElement('div');
+            blackBackground.id = 'popup-bg';
+            let popup = document.createElement('div');
+            popup.id = 'popup';
+            let descText = document.createElement('div');
+            descText.id = 'desc-text';
+            let descBox = document.createElement('div');
+            descBox.id = 'desc-box';
+            document.body.appendChild(blackBackground);
+            blackBackground.appendChild(popup);
+            popup.append(descText, descBox);
+
+            // descText
+            let spacer = document.createElement('div');
+            spacer.className = 'spacer';
+            let p = document.createElement('p');
+            p.textContent = 'Description';
+            let spacer2 = document.createElement('div');
+            spacer2.className = 'spacer';
+            let closeBtn = document.createElement('img');
+            closeBtn.src = './photo-bank/x-symbol.svg'
+            closeBtn.style.cssText = "cursor: pointer; margin-left: auto; margin-right: 10px;"
+            closeBtn.style.width = '10px';
+            closeBtn.style.height = '10px';
+            closeBtn.alt = 'close';
+            descText.append(spacer, p, spacer2, closeBtn);
+
+            //descBox
+            let description = document.createElement('p');
+            description.style.cssText = 'margin: 30px';
+            let encodedItemName = encodeURIComponent(itemName);
+            url = '/drinks/list?name=' + encodedItemName;
+            fetch(url) 
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('HTTP error! ${response.status}')
+                    }
+                    return response.json();
+                })
+                .then(items => {
+                    items.forEach(item => {
+                        itemDescription = item.description;
+                        console.log(itemDescription);
+                        description.textContent = itemDescription; // Must put in here; asynchronous
+                    }) 
+                })
+            descBox.appendChild(description);
+            closeBtn.addEventListener('click', function() {
+                blackBackground.remove();  
             });
         }
     }
@@ -75,7 +142,6 @@ function refreshDisplaySection(type) {
             drinkDisplay.removeChild(drinkDisplay.firstChild);
         }
     }
-
 }
 
 

@@ -95,7 +95,7 @@ function getCon() {
 }
 
 module.exports = {
-
   connectToDatabase, setupDatabase, getCon
 }
+
 

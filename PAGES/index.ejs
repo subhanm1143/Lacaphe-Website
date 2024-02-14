@@ -14,7 +14,7 @@
     <div class="header">
         <div class="top">
             <ul>
-                <img class="logo" src="/placeholder-site-logo.jpeg"  alt= "Lacaphe Placeholder Logo">
+                <img class="logo" src="./logo_white.png"  alt= "Lacaphe Placeholder Logo">
             </ul>
             <ul class="nav-bar">
                 <li>
@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-bar-link" href="/order">
+                    <a class="nav-bar-link" href="https://lacaphe.square.site/">
                         <p>ORDER</p>
                     </a>
                 </li>
@@ -38,16 +38,15 @@
                     </a>
                 </li>
                 <li>
-                    <!--Make all the buttons in the nav bar this way to be able to make a smooth button animation for each of them-->
-                    <!--<a> element w/ <p> element inside; <a> element is a part of the nav-bar-link class-->
-                    <a class="nav-bar-link" href="/social-media">
-                        <p>SOCIAL MEDIA</p>
-                    </a>
-                </li>
-                <li>
                     <a class="nav-bar-link" href="/login">
                         <p>LOGIN</p>
                     </a>
+                </li>
+                
+                <li>
+                    <a class="nav-bar-link" href="https://www.instagram.com/lacaphe.sj/?hl=en">
+                            <p><img src="./iconsInstagram.png" alt="Instagram"></p>
+                        </a>
                 </li>
                 <!--using a logo to connect like showen in Figma mockup -->
             </ul>
@@ -57,7 +56,7 @@
     <!-- This is the div with the quote section that also leads to the "Get to Know us" or "About" page. -->
     <div class="quote-section">
         <p>Add a quote/mission here</p>
-        <button>Get To Know Us</button>
+        <button><a href="/about">Get To Know Us</a></button>
     </div>
 
     <!-- This div displays the 6 pictures  -->
@@ -144,11 +143,11 @@
     <div class="order-online-section">
         <div class="oos-title-div">
             <p class="oos-title">IN-STORE PICKUP! ORDER AHEAD AND SKIP THE LINE!</p>
-            <button class="oos-btn">ORDER HERE</button>
+            <button class="oos-btn"><a href="https://lacaphe.square.site/">ORDER HERE</a></button>
         </div> 
         <div class="qr-code">QR Code goes here</div>
     </div>
-    <script defer src="script.js"></script>
+    
     <footer>
         <div class="container">
             <p>740 Story Rd #5, San Jose, CA 95122<br>+1(408) 564-6237<br></p>
@@ -178,6 +177,8 @@
             </div>
         </div>
     </footer>
+
+    <script defer src="script.js"></script>
 </body>
 
 </html>

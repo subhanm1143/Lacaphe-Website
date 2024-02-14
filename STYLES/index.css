@@ -4,10 +4,16 @@ body {
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
+.header{
+    background-image: url('LACAPHEPIC1.JPG'); /* Placeholder */
+    background-size: cover;
+    background-position-y: -650px;
+    background-repeat: no-repeat;
+    height: 500px;
+}
 .top {
     display: flex;
     justify-content: space-around;
-    background-color: #1f2937;
     width: auto;
     height: 400px;
     padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top*/
@@ -18,12 +24,17 @@ body {
     gap: 30px;
 }
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 120px;
+    margin: 0;
 }
 .nav-bar, li {
     color: white;
 }
+.nav-bar li:last-child {
+    margin-top: -7px; 
+}
+
 
 .nav-bar-link {
     text-decoration: none;
@@ -33,6 +44,7 @@ body {
 .nav-bar-link p {
     margin: 0px;
     transition: transform 0.3s ease; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nav-bar-link:hover p {

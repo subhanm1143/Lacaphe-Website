@@ -58,6 +58,38 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.get('/adminlogin', (req,res) =>{ //temporary page for admin login
+
+  res.render('adminLogin.ejs')  
+});
+
+app.post('/adminLogin', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const userId = uuidv4();
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+
+    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?,?,?)";
+
+  
+    db.getCon().query(insertUserSql, [userId , email, hashedPassword], (err, result) => {
+      if (err) {
+        console.error('Error inserting new user:', err);
+        res.status(500).send('Error during registration');
+        return;
+      }
+
+      res.send('User registered successfully');
+    });
+
+  } catch (error) {
+    console.error('Error during registration:', error);
+    res.status(500).send('Error during registration');
+  }
+});
+
 app.get('/drinks', (req, res) => {
   
   res.render('drinks.ejs');

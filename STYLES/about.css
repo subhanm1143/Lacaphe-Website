@@ -13,6 +13,8 @@ body {
     background-color: #1f2937;
     padding-top: 3%;
     padding-bottom: 20px;
+    background-image: url('../about_page_photos_lecaphe/AboutHeaderDSCF7769.jpg');
+    background-size: 100% 100%;
 }
 
 .content-wrapper {
@@ -66,13 +68,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
     background-color: chocolate;
 }
 
 .content-section div,
 .content-section img {
-    flex-basis: 48%;
+    flex-basis: 50%;
 }
 
 .content-section, .owners-section, .gallery {
@@ -88,7 +89,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
     background-color: sandybrown;
 }
 
@@ -106,12 +106,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 20px;
 }
 
 .gallery img {
-    flex-basis: 31%; /* Adjust this to change the number of columns */
-    margin-bottom: 15px;
+    flex-basis: 33.333%; /* Adjust this to change the number of columns */
     max-width: 100%;
     height: auto;
 }
@@ -153,4 +151,10 @@ footer {
 .map-footer {
     margin-top: 0;
     padding-bottom: 10px;
+}
+
+.content-section img, .owners-section img, .gallery img {
+    max-width: 100%; /* Keeps the image within its container */
+    height: auto; /* Maintains aspect ratio */
+    max-height: 400px; /* Example: limits the image height */
 }

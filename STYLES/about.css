@@ -1,8 +1,8 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: #f4f4f4;
 }
 
 .top {
@@ -16,31 +16,35 @@ body {
     background-image: url('../about_page_photos_lecaphe/AboutHeaderDSCF7769.jpg');
     background-size: 100% 100%;
 }
-
-.content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px; 
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 20px; 
+.header{
+    background-image: url('LACAPHEPIC3.jpg'); /* Placeholder */
+    background-size:cover;
+    background-position-y: -600px;
+    background-repeat: no-repeat;
+    height: 500px;
 }
-
+/*.top {
+    display: flex;
+    justify-content: space-around;
+    width: auto;
+    height: 400px;
+    padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top
+}*/
 .nav-bar {
     list-style-type: none;
     display: flex;
     gap: 30px;
-    margin-bottom: 50px; 
 }
-
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 120px;
+    margin: 0;
 }
-
 .nav-bar, li {
     color: white;
+}
+.nav-bar li:last-child {
+    margin-top: -7px; 
 }
 
 .nav-bar-link {
@@ -51,17 +55,27 @@ body {
 .nav-bar-link p {
     margin: 0px;
     transition: transform 0.3s ease; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nav-bar-link:hover p {
     transform: scale(0.9);
 }
-
-.headerTitle {
+.inside_header {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-    padding: 20px 10px;
-    width: 100%;
+    margin-top: 0px;
+}
+
+.inside_header h1 {
+    margin: 0;
+    font-size: 6em;
+    font-family: 'Karma', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .content-section {
@@ -69,45 +83,40 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: chocolate;
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
 }
-
 .content-section div,
 .content-section img {
     flex-basis: 50%;
 }
-
-.content-section, .owners-section, .gallery {
-    min-height: 300px;
-}
-
 .content-section img {
     max-width: 100%;
     height: auto;
 }
-
 .owners-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: sandybrown;
+    margin: 20px;
+    padding: 20px;
+    background-color: #e2e2e2;
 }
-
 .owners-section div,
 .owners-section img {
     flex-basis: 48%;
 }
-
 .owners-section img {
     max-width: 100%;
     height: auto;
 }
-
 .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
 .gallery img {
     flex-basis: 33.333%; /* Adjust this to change the number of columns */
     max-width: 100%;
@@ -126,13 +135,11 @@ footer {
     align-items: center; 
     justify-content: space-between; 
 }
-
 .footer-right {
     display: flex; 
     align-items: center;
     padding-right: 20px;
 }
-
 .footer-right img {
     width: 30px;
     height: 30px;

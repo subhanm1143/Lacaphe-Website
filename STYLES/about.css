@@ -30,6 +30,22 @@ body {
     height: 400px;
     padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top
 }*/
+
+.header{
+    background-image: url('LACAPHEPIC3.jpg'); /* Placeholder */
+    background-size:cover;
+    background-position-y: -600px;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+.top {
+    display: flex;
+    justify-content: space-around;
+    width: auto;
+    height: 400px;
+    padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top*/
+}
+
 .nav-bar {
     list-style-type: none;
     display: flex;
@@ -81,15 +97,19 @@ body {
 .content-section {
     display: flex;
     justify-content: space-between;
+
     align-items: center;
     background-color: chocolate;
+
     margin: 20px;
     padding: 20px;
     background-color: white;
 }
 .content-section div,
 .content-section img {
-    flex-basis: 50%;
+
+    flex-basis: 48%;
+
 }
 .content-section img {
     max-width: 100%;
@@ -98,8 +118,10 @@ body {
 .owners-section {
     display: flex;
     justify-content: space-between;
+
     align-items: center;
     background-color: sandybrown;
+
     margin: 20px;
     padding: 20px;
     background-color: #e2e2e2;

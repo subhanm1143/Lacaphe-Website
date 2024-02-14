@@ -9,18 +9,20 @@ body {
 
 /* ---- Header Start ------ */
 
-.header {
-    display: flex;
-    flex-direction: column;
-    background-color: #1f2937;
-    height: 450px; /* This value determines the height of the hero section, idk if this should be as high as the home page's*/
-}
 
+.header{
+    background-image: url('LACAPHEPIC2.jpg'); /* Placeholder */
+    background-size:cover;
+    background-position-y: -740px;
+    background-repeat: no-repeat;
+    height: 500px;
+}
 .top {
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    padding-top: 3%;
+    width: auto;
+    height: 400px;
+    padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top*/
 }
 .nav-bar {
     list-style-type: none;
@@ -28,11 +30,15 @@ body {
     gap: 30px;
 }
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 120px;
+    margin: 0;
 }
 .nav-bar, li {
     color: white;
+}
+.nav-bar li:last-child {
+    margin-top: -7px; 
 }
 
 .nav-bar-link {
@@ -43,11 +49,29 @@ body {
 .nav-bar-link p {
     margin: 0px;
     transition: transform 0.3s ease; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nav-bar-link:hover p {
     transform: scale(0.9);
 }
+.inside_header {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    margin-top: 0px;
+}
+
+.inside_header h1 {
+    margin: 0;
+    font-size: 6em;
+    font-family: 'Karma', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 
 /* ---- Header End ------ */
 
@@ -169,6 +193,11 @@ footer {
     margin: 0;
 }
 
+.container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+}
 .footer-right {
     display: flex; 
     align-items: center;
@@ -180,15 +209,18 @@ footer {
 }
 
 .footer-right p {
+    margin-bottom: 20px;
+    text-align: left;
     text-decoration: none;
     color: white; 
     padding-right: 10px;
+    font-family: Georgia, sans-serif; /* Change font-family */
+    line-height: 1.5; /* Increase line height */
 }
 
-.container {
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; 
+.map-footer {
+    margin-top: 0;
+    padding-bottom: 10px;
 }
 
 /* ------ Footer End ------- */

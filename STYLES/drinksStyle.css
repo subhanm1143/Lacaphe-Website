@@ -95,7 +95,6 @@ body {
     height: 450px;
     /* This value determines the height of the hero section, idk if this should be as high as the home page's*/
 }
-
 .top {
     display: flex;
     justify-content: space-around;

@@ -97,8 +97,23 @@ app.get('/drinks', (req, res) => {
 
 app.get('/drinks/list', (req, res) => {
   let type = req.query.type;
-  // console.log(type);
-  db.getCon().query('SELECT * FROM Drinks WHERE type = ?', [type], (err, result) => {
+  let name = req.query.name;
+  let query = '';
+  let queryParams = [];
+
+  if (type) {
+    query = 'SELECT * FROM Drinks WHERE type = ?';
+    queryParams = [type];
+  } else if (name) {
+    // Assuming the 'name' column in your database is the one to search by
+    query = 'SELECT * FROM Drinks WHERE name LIKE ?';
+    queryParams = [`%${name}%`]; // Use LIKE for partial matches
+  } else {
+    res.status(400).send('Missing type or name query parameter');
+    return;
+  }
+
+  db.getCon().query(query, queryParams, (err, result) => {
     if (err) {
       res.status(500).send('Database Error :(');
       console.error(err);

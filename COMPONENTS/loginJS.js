@@ -1,5 +1,11 @@
 //brings up login screen
-document.querySelector("#show-login").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
+//document.querySelector("#show-login").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
+
+document.querySelector("a.nav-bar-link[href='/login']").addEventListener("click", function(event){
+    event.preventDefault(); // Prevent the default action of following the link
+    document.querySelector(".popup").classList.add("active");
+});
+
 
 //closes pop ups
 document.querySelector(".popup .close-btn").addEventListener("click", function(){document.querySelector(".popup").classList.remove("active");});

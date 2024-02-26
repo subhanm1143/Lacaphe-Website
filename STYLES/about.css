@@ -5,32 +5,6 @@ body {
     background-color: #f4f4f4;
 }
 
-.top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background-color: #1f2937;
-    padding-top: 3%;
-    padding-bottom: 20px;
-    background-image: url('../about_page_photos_lecaphe/AboutHeaderDSCF7769.jpg');
-    background-size: 100% 100%;
-}
-.header{
-    background-image: url('LACAPHEPIC3.jpg'); /* Placeholder */
-    background-size:cover;
-    background-position-y: -600px;
-    background-repeat: no-repeat;
-    height: 500px;
-}
-/*.top {
-    display: flex;
-    justify-content: space-around;
-    width: auto;
-    height: 400px;
-    padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top
-}*/
-
 .header{
     background-image: url('LACAPHEPIC3.jpg'); /* Placeholder */
     background-size:cover;

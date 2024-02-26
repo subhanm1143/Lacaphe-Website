@@ -31,6 +31,11 @@ app.get('/login', (req, res) => {
   
   res.render('login.ejs');
 });
+
+// TODO: Temporary page, get rid of later
+app.get('/admin', (req, res) => {
+  res.render('admin.ejs');
+});
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;

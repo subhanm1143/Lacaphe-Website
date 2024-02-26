@@ -89,6 +89,21 @@ footer {
     margin-top: 0;
     padding-bottom: 10px;
 }
+.footer-nav-bar {
+    text-align: center;
+    background-color: #000; /* Set the background color of the navigation bar */
+}
+
+.footer-nav-bar a, .footer-nav-bar a:visited {
+    color: white; /* Sets the text color for links */
+    text-decoration: none; /* Removes underline from links */
+    margin: 0 10px; /* Spaces out links */
+}
+
+.footer-nav-bar a:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}
+
 
 
  /* ----------for quote section below----------- */

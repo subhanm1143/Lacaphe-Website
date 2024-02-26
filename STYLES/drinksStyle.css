@@ -7,32 +7,115 @@ body {
     flex-direction: column;
 }
 
-/* ---- Header Start ------ */
 
-.header {
-    display: flex;
-    flex-direction: column;
-    background-color: #1f2937;
-    height: 450px; /* This value determines the height of the hero section, idk if this should be as high as the home page's*/
+/* ---- Popup Start ------ */
+
+@keyframes slideDown {
+    from {
+        height: 0%
+    } 
+    to {
+        height: 100%
+    }
 }
 
+#popup-bg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: slideDown 0.5s ease-out forwards;
+}
+
+#popup {
+    width: auto;
+    min-height: 5%;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+#desc-text {
+    height: 100%;
+    width: 100%;
+    background-color: #1f2937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#popup p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 15px 15px 5px 15px;
+}
+
+/* 
+#popup-text {
+    font-size: 20px;
+}
+*/
+
+#desc-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#desc-box {
+    background-color: #1f2937;
+}
+
+/* ---- Popup End ------ */
+
+/* ---- Header Start ------ */
+
+.header{
+    background-image: url('about_page_photos_lecaphe/OurStory.jpg'); /* Placeholder */
+    background-size:cover;
+    background-position-y: -1000px;
+    background-repeat: no-repeat;
+    height: 1000px;
+}
 .top {
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    padding-top: 3%;
+    width: auto;
+    height: 400px;
+    padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top*/
 }
+
 .nav-bar {
     list-style-type: none;
     display: flex;
     gap: 30px;
 }
+
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 120px;
+    margin: 0;
 }
-.nav-bar, li {
+
+.nav-bar,
+li {
     color: white;
+}
+.nav-bar li:last-child {
+    margin-top: -7px; 
 }
 
 .nav-bar-link {
@@ -43,11 +126,28 @@ body {
 .nav-bar-link p {
     margin: 0px;
     transition: transform 0.3s ease; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nav-bar-link:hover p {
     transform: scale(0.9);
 }
+.inside_header {
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    margin-top: 0px;
+}
+
+.inside_header h1 {
+    margin: 0;
+    font-size: 6em;
+    font-family: 'Karma', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 
 /* ---- Header End ------ */
 
@@ -77,7 +177,7 @@ body {
     background-color: chocolate;
 }
 
-#drink-categories { 
+#drink-categories {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -91,7 +191,7 @@ body {
     font-size: 16px;
     background-color: transparent;
     border: none;
-    cursor: pointer; 
+    cursor: pointer;
     /* border-radius: 5px; */
     transition-duration: 200ms;
 }
@@ -169,27 +269,55 @@ footer {
     margin: 0;
 }
 
+.container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+}
 .footer-right {
-    display: flex; 
+    display: flex;
     align-items: center;
     padding-right: 20px;
 }
+
 .footer-right img {
     width: 30px;
     height: 30px;
 }
 
 .footer-right p {
+    margin-bottom: 20px;
+    text-align: left;
     text-decoration: none;
-    color: white; 
+    color: white;
     padding-right: 10px;
+    font-family: Georgia, sans-serif; /* Change font-family */
+    line-height: 1.5; /* Increase line height */
 }
 
 .container {
     display: flex;
-    align-items: center; 
-    justify-content: space-between; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+.map-footer {
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+.footer-nav-bar {
+    text-align: center;
+    background-color: #000; /* Set the background color of the navigation bar */
+}
+
+.footer-nav-bar a, .footer-nav-bar a:visited {
+    color: white; /* Sets the text color for links */
+    text-decoration: none; /* Removes underline from links */
+    margin: 0 10px; /* Spaces out links */
+}
+
+.footer-nav-bar a:hover {
+    text-decoration: underline; /* Adds underline on hover */
 }
 
 /* ------ Footer End ------- */
-

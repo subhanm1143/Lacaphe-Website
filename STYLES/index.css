@@ -2,12 +2,18 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
+}
+.header{
+    background-image: url('LACAPHEPIC1.JPG'); /* Placeholder */
+    background-size: cover;
+    background-position-y: -1000px; /* made the header bigger*/
+    background-repeat: no-repeat;
+    height: 1000px;
 }
 .top {
     display: flex;
     justify-content: space-around;
-    background-color: #1f2937;
     width: auto;
     height: 400px;
     padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top*/
@@ -18,12 +24,17 @@ body {
     gap: 30px;
 }
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 120px;
+    margin: 0;
 }
 .nav-bar, li {
     color: white;
 }
+.nav-bar li:last-child {
+    margin-top: -7px; 
+}
+
 
 .nav-bar-link {
     text-decoration: none;
@@ -33,6 +44,7 @@ body {
 .nav-bar-link p {
     margin: 0px;
     transition: transform 0.3s ease; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nav-bar-link:hover p {
@@ -77,6 +89,21 @@ footer {
     margin-top: 0;
     padding-bottom: 10px;
 }
+.footer-nav-bar {
+    text-align: center;
+    background-color: #000; /* Set the background color of the navigation bar */
+}
+
+.footer-nav-bar a, .footer-nav-bar a:visited {
+    color: white; /* Sets the text color for links */
+    text-decoration: none; /* Removes underline from links */
+    margin: 0 10px; /* Spaces out links */
+}
+
+.footer-nav-bar a:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}
+
 
 
  /* ----------for quote section below----------- */
@@ -236,7 +263,30 @@ footer {
 }
 
 .qr-code {
-    width: 50%;
+    width: 30%;
+    
+}
+*/
+.qr-code .qr-image {
+    width: 150px; /*adjust the size as needed */
+    object-fit: cover; 
+    aspect-ratio: 1 / 1;
+    margin: auto; 
+    display: block; 
+}
+
+.qr-code {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-basis: 30%; /*adjust margins*/
+}
+
+.phone-adjust .phone-image {
+    width: 200px; /*adjust the size as needed */
+    object-fit: cover; 
+    margin: auto; 
+    display: block; 
 }
 
 .oos-btn {
@@ -260,4 +310,10 @@ footer {
 .oos-btn:hover {
     transform: scale(0.9);
 }
+.phone-adjust {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-basis: 0%; /*adjust margins*/
+} 
 

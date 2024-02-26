@@ -14,16 +14,21 @@
     <div class="header">
         <div class="top">
             <ul>
-                <img class="logo" src="/placeholder-site-logo.jpeg"  alt= "Lacaphe Placeholder Logo">
+                <img class="logo" src="./logo_white.png"  alt= "Lacaphe Placeholder Logo">
             </ul>
             <ul class="nav-bar">
+                <li>
+                    <a class="nav-bar-link" href="/">
+                        <p>HOME</p>
+                    </a>
+                </li>
                 <li>
                     <a class="nav-bar-link" href="/about">
                         <p>ABOUT</p>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-bar-link" href="/order">
+                    <a class="nav-bar-link" href="https://lacaphe.square.site/">
                         <p>ORDER</p>
                     </a>
                 </li>
@@ -38,37 +43,39 @@
                     </a>
                 </li>
                 <li>
-                    <!--Make all the buttons in the nav bar this way to be able to make a smooth button animation for each of them-->
-                    <!--<a> element w/ <p> element inside; <a> element is a part of the nav-bar-link class-->
-                    <a class="nav-bar-link" href="/social-media">
-                        <p>SOCIAL MEDIA</p>
-                    </a>
-                </li>
-                <li>
                     <a class="nav-bar-link" href="/login">
                         <p>LOGIN</p>
                     </a>
+                </li>
+                
+                <li>
+                    <a class="nav-bar-link" href="https://www.instagram.com/lacaphe.sj/?hl=en">
+                            <p><img src="./iconsInstagram.png" alt="Instagram"></p>
+                        </a>
                 </li>
                 <!--using a logo to connect like showen in Figma mockup -->
             </ul>
         </div>
     </div>
 
+    <!-- This section will pull the ejs from login.ejs -->
+    <%- include('login.ejs') %>
+
     <!-- This is the div with the quote section that also leads to the "Get to Know us" or "About" page. -->
     <div class="quote-section">
-        <p>Add a quote/mission here</p>
-        <button>Get To Know Us</button>
+        <p>Ở đây có trà, cà phê, và cả niềm vui</p>
+        <button><a href="/about">Get To Know Us</a></button>
     </div>
 
     <!-- This div displays the 6 pictures  -->
     <div class="photo-collection">
         <div class="container">
-            <img class="photo" src="/daan-evers-tKN1WXrzQ3s-unsplash.jpg" alt="">
-            <img class="photo" src="/kris-atomic-3b2tADGAWnU-unsplash.jpg" alt="">
-            <img class="photo" src="/nathan-dumlao-Y3AqmbmtLQI-unsplash.jpg" alt="">
-            <img class="photo" src="/nathan-dumlao-zUNs99PGDg0-unsplash.jpg" alt="">
-            <img class="photo" src="/sincerely-media-VNsdEl1gORk-unsplash.jpg" alt="">
-            <img class="photo" src="/tony-lee-8IKf54pc3qk-unsplash.jpg" alt="">
+            <img class="photo" src="/collage1.jpg" alt="">
+            <img class="photo" src="/collage2.jpg" alt="">
+            <img class="photo" src="/collage3.jpg" alt="">
+            <img class="photo" src="/collage4.jpg" alt="">
+            <img class="photo" src="/collage5.jpg" alt="">
+            <img class="photo" src="/collage6.jpg" alt="">
         </div>
     </div>
 
@@ -158,12 +165,30 @@
             <a href="https://lacaphe.square.site/#2">
                 <button class="oos-btn">ORDER HERE</button>
             </a>
+
+            <div class="phone-adjust"> 
+                <img class="phone-image" src="/phoneOrderPic.png" alt="">    
+            </div>
+            <div class="qr-code">
+                <img class="qr-image" src="/TEMPBARCODE.jpg" alt="">
+            </div>
         </div> 
-        <div class="qr-code">QR Code goes here</div>
+        <!-- <div class="qr-code">QR Code goes here</div> -->
     </div>
 
     <script defer src="script.js"></script>
 
+            <!-- <p class="oos-title">IN-STORE PICKUP! ORDER AHEAD AND SKIP THE LINE!</p>
+            <button class="oos-btn"><a href="https://lacaphe.square.site/">ORDER HERE</a></button>
+        </div> -->
+        <!-- <div class="phone-adjust"> 
+            <img class="phone-image" src="/phoneOrderPic.png" alt="">    
+        </div>
+        <div class="qr-code">
+            <img class="qr-image" src="/TEMPBARCODE.jpg" alt="">
+        </div>
+    </div> -->
+    
     <footer>
         <div class="container">
             <p>740 Story Rd #5, San Jose, CA 95122<br>+1(408) 564-6237<br></p>
@@ -192,7 +217,18 @@
 
             </div>
         </div>
+        <p class="footer-nav-bar">
+            <a href="/">Home</a> | 
+            <a href="/about">About</a> | 
+            <a href="https://lacaphe.square.site/">Order</a> | 
+            <a href="/drinks">Drinks</a> | 
+            <a href="https://lacaphe.carrd.co/">Connect</a> | 
+            <a href="/login">Login</a>
+        </p>
     </footer>
+
+    <script defer src="script.js"></script>
+    <script src="login.ejs" defer></script>
 </body>
 
 </html>

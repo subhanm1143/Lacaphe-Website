@@ -83,17 +83,12 @@ body {
 
 /* ---- Header Start ------ */
 
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #1f2937;
-    background-image: url('LACAPHEPIC2.jpg'); /* Placeholder */
+.header{
+    background-image: url('LACAPHEPIC2.JPG'); /* Placeholder */
     background-size: cover;
-    /*background-position-y: -740px; */
+    background-position-y: -1050px;
     background-repeat: no-repeat;
-    height: 450px;
-    /* This value determines the height of the hero section, idk if this should be as high as the home page's*/
+    height: 500px;
 }
 .top {
     display: flex;
@@ -138,11 +133,10 @@ li {
     transform: scale(0.9);
 }
 .inside_header {
-    /* position: absolute;
-    top: 45%;
+    position: absolute;
+    top: 24%;
     left: 50%;
-    transform: translate(-50%, -50%); */
-    text-align: center;
+    transform: translate(-50%, -50%);
     color: white;
     margin-top: 0px;
 }
@@ -310,6 +304,20 @@ footer {
 .map-footer {
     margin-top: 0;
     padding-bottom: 10px;
+}
+.footer-nav-bar {
+    text-align: center;
+    background-color: #000; /* Set the background color of the navigation bar */
+}
+
+.footer-nav-bar a, .footer-nav-bar a:visited {
+    color: white; /* Sets the text color for links */
+    text-decoration: none; /* Removes underline from links */
+    margin: 0 10px; /* Spaces out links */
+}
+
+.footer-nav-bar a:hover {
+    text-decoration: underline; /* Adds underline on hover */
 }
 
 /* ------ Footer End ------- */

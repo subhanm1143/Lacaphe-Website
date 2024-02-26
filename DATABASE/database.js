@@ -5,7 +5,7 @@ function connectToDatabase() {
   con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "DemBoys!!!!"
+    password: "DemBoys"
   });
   con.connect(err => {
     setupDatabase(err);

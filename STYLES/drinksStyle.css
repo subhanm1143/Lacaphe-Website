@@ -11,11 +11,11 @@ body {
 
 
 .header{
-    background-image: url('LACAPHEPIC2.jpg'); /* Placeholder */
+    background-image: url('about_page_photos_lecaphe/OurStory.jpg'); /* Placeholder */
     background-size:cover;
-    background-position-y: -740px;
+    background-position-y: -1000px;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 1000px;
 }
 .top {
     display: flex;

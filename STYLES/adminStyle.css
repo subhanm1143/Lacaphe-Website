@@ -1,4 +1,63 @@
-section{
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#add-drink {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(216, 197, 161); 
+}
+
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+td, th {
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+.rounded {
+    border-radius: 30px;
+}
+
+hr {
+    width: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* section{
     display: flex;
     flex-direction: column; 
 }
@@ -36,5 +95,5 @@ form p {
     text-align: center; 
     
 } 
-
+ */
 

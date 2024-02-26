@@ -5,32 +5,6 @@ body {
     background-color: #f4f4f4;
 }
 
-.top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background-color: #1f2937;
-    padding-top: 3%;
-    padding-bottom: 20px;
-    background-image: url('../about_page_photos_lecaphe/AboutHeaderDSCF7769.jpg');
-    background-size: 100% 100%;
-}
-.header{
-    background-image: url('LACAPHEPIC3.jpg'); /* Placeholder */
-    background-size:cover;
-    background-position-y: -1000px;
-    background-repeat: no-repeat;
-    height: 1000px;
-}
-/*.top {
-    display: flex;
-    justify-content: space-around;
-    width: auto;
-    height: 400px;
-    padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top
-}*/
-
 .header{
     background-image: url('LACAPHEPIC3.jpg'); /* Placeholder */
     background-size:cover;
@@ -100,20 +74,24 @@ body {
 
     align-items: center;
     background-color: chocolate;
+   /* padding: 20px;
 
-    margin: 20px;
+    /*  margin: 20px;
     padding: 20px;
-    background-color: white;
+   /* background-color: white;*/
 }
 .content-section div,
 .content-section img {
 
-    flex-basis: 48%;
+    flex-basis: 49%;
 
 }
+.content-section p,h2 {
+    padding: 20px; /* Adjust the padding as needed */
+}
+
 .content-section img {
-    max-width: 100%;
-    height: auto;
+    padding: 0; /* This ensures that images have no padding */
 }
 .owners-section {
     display: flex;
@@ -121,18 +99,26 @@ body {
 
     align-items: center;
     background-color: sandybrown;
+  /*  padding: 20px;
 
-    margin: 20px;
-    padding: 20px;
-    background-color: #e2e2e2;
+
+    /* margin: 20px;
+   background-color: #e2e2e2;*/
 }
 .owners-section div,
 .owners-section img {
-    flex-basis: 48%;
+    flex-basis: 49%;
 }
 .owners-section img {
     max-width: 100%;
     height: auto;
+}
+.owners-section p,h2 {
+    padding: 20px; /* Adjust the padding as needed */
+}
+
+.owners-section img {
+    padding: 0; /* This ensures that images have no padding */
 }
 .gallery {
     display: flex;
@@ -186,4 +172,18 @@ footer {
     max-width: 100%; /* Keeps the image within its container */
     height: auto; /* Maintains aspect ratio */
     max-height: 400px; /* Example: limits the image height */
+}
+.footer-nav-bar {
+    text-align: center;
+    background-color: #000; /* Set the background color of the navigation bar */
+}
+
+.footer-nav-bar a, .footer-nav-bar a:visited {
+    color: white; /* Sets the text color for links */
+    text-decoration: none; /* Removes underline from links */
+    margin: 0 10px; /* Spaces out links */
+}
+
+.footer-nav-bar a:hover {
+    text-decoration: underline; /* Adds underline on hover */
 }

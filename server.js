@@ -1,7 +1,13 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+
+const jwt = require('jsonwebtoken');
+
 const cors = require('cors');
+
 const { v4: uuidv4 } = require('uuid');
+const cookieParser = require('cookie-parser');
+
 const app = express();
 const port = 3000;
 const db = require('./DATABASE/database'); 
@@ -14,9 +20,14 @@ app.use(express.static(path.join(__dirname, 'STYLES')))
 app.use(express.static(path.join(__dirname, 'PHOTOS')))
 app.use(express.static(path.join(__dirname, 'ICONS')))
 app.use(express.static(path.join(__dirname, 'COMPONENTS')))
+const session = require('express-session');
+
 // Set the view engine to ejs
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/PAGES'));
+
+app.use(cookieParser());
+
 
 
 var corsOptions ={
@@ -25,12 +36,18 @@ var corsOptions ={
 //enable middleware
 app.use(cors(corsOptions));
 
+
 app.use(express.json());
 app.use(cookieParser());
 //test
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
-
+app.use(session({
+  secret: 'yourSecretKey',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: 'auto' } // 'auto' will use 'true' on HTTPS
+}));
 app.get('/', (req, res) => {
  
   res.render('index.ejs');
@@ -44,12 +61,17 @@ app.get('/login', (req, res) => {
   
   res.render('login.ejs');
 });
+
+const secretKey = "yourSecretKey";
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const userId = uuidv4();
-
     const hashedPassword = await bcrypt.hash(password, 10);
+
+
+    //const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?, ?, ?)";
+    db.getCon().query(insertUserSql, [userId, email, hashedPassword], (err, result) => {
 
 
     const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?,?,?)";
@@ -70,19 +92,90 @@ app.post('/login', async (req, res) => {
     
   
     db.getCon().query(insertUserSql, [userId , email, hashedPassword], (err, result) => {
+
       if (err) {
         console.error('Error inserting new user:', err);
-        res.status(500).send('Error during registration');
-        return;
+        //return res.status(500).send('Error during registration');
       }
 
       //res.send('User registered successfully');
     });
+
+
+      //res.send('User registered successfully');
+    });
     
+
   } catch (error) {
     console.error('Error during registration:', error);
-    res.status(500).send('Error during registration');
+    //res.status(500).send('Error during registration');
   }
+  try {
+    const { email, password } = req.body;
+    const findUserSql = "SELECT * FROM UserLogin WHERE email = ?";
+
+    db.getCon().query(findUserSql, [email], async (err, users) => {
+      if (err) {
+        console.error('Error fetching user:', err);
+        return res.status(500).send('Error during login'); // Use return here
+      }
+
+      if (users.length === 0) {
+        return res.status(404).send('User not found'); // Use return here
+      }
+
+      const user = users[0];
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (isMatch) {
+        const accessToken = jwt.sign({  email: user.email }, secretKey, { expiresIn: '1h' });
+        res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+        console.log("Match");
+        return res.json({ accessToken }); // Use return here
+      } else {
+        return res.status(401).send('Password is incorrect'); // Use return here
+      }
+    });
+  } catch (error) {
+    console.error('Error during login:', error);
+    return res.status(500).send('Error during login'); // Use return here
+  }
+});
+
+function authenticateToken(req, res, next) {
+  const token = req.cookies['token']; // Access the token from the request cookies
+  if (!token) return res.sendStatus(401); // No token found
+
+  jwt.verify(token, secretKey, (err, user) => {
+    if (err) return res.sendStatus(403); // Token validation failed
+
+    req.user = user; // Token is valid, proceed
+    next();
+  });
+}
+app.post('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error("Error destroying session: ", err);
+      return res.status(500).json({ message: 'Logout failed' });
+    }
+    
+    // Clear any authentication-related cookies
+    res.clearCookie('connect.sid', { path: '/' }); // Adjust based on your session cookie's name
+    res.clearCookie('token', { path: '/' }); // If you are using a 'token' cookie
+    // Set 'jwt' cookie to expire immediately
+    res.cookie('jwt', '', { maxAge: 1, path: '/' });
+
+    // Send a JSON response indicating logout success
+    res.json({ message: 'Logged out successfully' });
+  });
+});
+
+
+
+app.get('/protected', authenticateToken, (req, res) => {
+  // This route is now protected, and req.user contains the payload of the verified JWT
+  res.send("welcome!!!")
 });
 
 app.get('/adminlogin', (req,res) =>{ //temporary page for admin login

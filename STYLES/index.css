@@ -81,7 +81,7 @@ footer {
     text-decoration: none;
     color: white; 
     padding-right: 10px;
-    font-family: Georgia, sans-serif; /* Change font-family */
+    font-family: Georgia, sans-serif; /*Change font-family*/
     line-height: 1.5; /* Increase line height */
 }
 
@@ -108,10 +108,9 @@ footer {
 
  /* ----------for quote section below----------- */
 .quote-section {
-    background-color: #B4ADA1;
+    background-color: #919388;
     display: flex;
     width: auto;
-    height: 50px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -119,10 +118,29 @@ footer {
     padding-top: 30px;
 }
 
+.quote-section>button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #1f2937;
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.quote-section>button:hover {
+    transform: scale(0.9);
+}
+
 /* ----------- for Photo collection divs below ------------ */
 .photo-collection {
     display: flex;
-    height: 840px;
+    /* height: 700px; */
 }
 .container {
     flex-wrap: wrap;
@@ -139,40 +157,27 @@ footer {
 /* ----------Featured Drink Div below---------- */
 
 .featured-section {
-    width: auto;
-    height: 600px;
-    background-color: B4ADA1;
-}
-.title-div {
-    display: flex;
-    padding-top: 30px;
-    justify-content: center;
-}
-.title {
-    margin: 0;
-    font-size: xxx-large;
-}
-
-/* ----------Featured Drink Div below---------- */
-.featured-section {
     padding-top: 30px;
     padding-bottom: 50px;
     padding-left: 15%;
     padding-right: 15%;
     background-color: #B4ADA1;
+    
 }
 
-.featured-row {
-    display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: center;
-}
-
-.title {
+.featured-section > .title {
+    color: white;
     margin: 0;
     padding-bottom: 20px;
     font-size: xxx-large;
     display: flex;
+    justify-content: center;
+}
+
+/* Mess around with wrap option to see which one fits better. */
+.featured-row {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -221,6 +226,8 @@ footer {
 
 .card-text {
     padding: 0 16px;
+    font-weight: bold;
+    color: #fff;
 }
 
 .card-text::after,
@@ -231,12 +238,13 @@ footer {
 }
 
 
-
 /*------------ Order Online Div below ---------------*/
 
 .order-online-section {
     width: auto;
-    height: 400px;
+    /* height: 400px; */
+    padding-top: 8em;
+    padding-bottom: 8em;
     background-color: #919388;
     display: flex;
     justify-content: center;
@@ -245,11 +253,15 @@ footer {
 }
 /* use padding to move around divs */
 .oos-title-div {
-    width: 50%;
-    padding-left: 100px;
+    width: 20%;
+    padding-left: 30%; 
 }
 
-/* take out temporarily
+.oos-title {
+    font-family:'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif';
+    font-size: xx-large; 
+}
+
 .qr-code {
     width: 30%;
     
@@ -277,6 +289,27 @@ footer {
     display: block; 
 }
 
+.oos-btn {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #B4ADA1;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.562);
+    font-weight: bold;
+
+}
+
+.oos-btn:hover {
+    transform: scale(0.9);
+}
 .phone-adjust {
     display: flex;
     justify-content: center; 

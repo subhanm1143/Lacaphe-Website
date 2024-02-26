@@ -5,9 +5,10 @@ const config = require("../CONFIG/db.config.js");
 
 function connectToDatabase() {
   con = mysql.createConnection({
-    host: config.HOST,
-    user: config.USER,
-    password: config.PASSWORD
+
+    host: "localhost",
+    user: "root",
+    password: "DemBoys!!!!"
   });
   con.connect(err => {
     setupDatabase(err);

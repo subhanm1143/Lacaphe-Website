@@ -4,36 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <!-- <link rel="stylesheet" href="/loginStyle.css"> -->
+    <link rel="stylesheet" href="/loginStyle.css">
 </head>
 
-
+<!--
 <div class="center">
     <button id="show-login">Login</button>
 </div>
+-->
+
 <body>
+
     <div class="popup">
         <div id="close-btn" class="close-btn">&times;</div>
+
         <div class="form">
             <h2>Login</h2>
             <div class="form-element">
-                <label for = "email">email</label>
+                <label for = "email">Email</label>
                 <input type="text" id="email" placeholder="Enter email">
             </div>
 
             <div class="form-element">
-                <label for = "password">password</label>
+                <label for = "password">Password</label>
                 <input type="password" id="password" placeholder="Enter password">
             </div>
 
             <div class="form-element">
-                <button id = "signin-btn">Sign in</button>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <div id="sign" class="form-element">
+                <button>Sign in</button>
+            </div>
+
+            <div id="createAcc" class="form-element"> 
+                <button>Create An Account</button>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <div class="create-popup">
+        <div id="close-btn" class="close-btn">&times;</div>
+
+        <div class="form">
+            <h2>Create Account</h2>
+            <div class="form-element">
+                <label for = "email">Enter Email</label>
+                <input type="text" id="email" placeholder="Enter email">
+            </div>
+
+            <div class="form-element">
+                <label for = "password">Enter Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+
+            <div class="form-element">
+                <label for = "confirm-password">Enter Password Again</label>
+                <input type="confirm-password" id="confirm-password" placeholder="Enter password again">
+            </div>
+
+            <div id="post-createAcc" class="form-element"> 
+                <button>Create</button>
+            </div>
+        </div>
+    </div>
+
     <script src="/loginJS.js" defer></script>
-    
 </body>
 
 </html>

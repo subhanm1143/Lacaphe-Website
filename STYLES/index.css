@@ -2,14 +2,14 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
 }
 .header{
     background-image: url('LACAPHEPIC1.JPG'); /* Placeholder */
     background-size: cover;
-    background-position-y: -650px;
+    background-position-y: -1000px; /* made the header bigger*/
     background-repeat: no-repeat;
-    height: 500px;
+    height: 1000px;
 }
 .top {
     display: flex;
@@ -108,7 +108,7 @@ footer {
 
  /* ----------for quote section below----------- */
 .quote-section {
-    background-color: chocolate;
+    background-color: #B4ADA1;
     display: flex;
     width: auto;
     height: 50px;
@@ -122,7 +122,7 @@ footer {
 /* ----------- for Photo collection divs below ------------ */
 .photo-collection {
     display: flex;
-    height: 700px;
+    height: 840px;
 }
 .container {
     flex-wrap: wrap;
@@ -141,7 +141,7 @@ footer {
 .featured-section {
     width: auto;
     height: 600px;
-    background-color: sandybrown;
+    background-color: B4ADA1;
 }
 .title-div {
     display: flex;
@@ -159,7 +159,7 @@ footer {
     padding-bottom: 50px;
     padding-left: 15%;
     padding-right: 15%;
-    background-color: sandybrown;
+    background-color: #B4ADA1;
 }
 
 .featured-row {
@@ -237,7 +237,7 @@ footer {
 .order-online-section {
     width: auto;
     height: 400px;
-    background-color: grey;
+    background-color: #919388;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -248,7 +248,39 @@ footer {
     width: 50%;
     padding-left: 100px;
 }
+
+/* take out temporarily
 .qr-code {
-    width: 50%;
+    width: 30%;
+    
 }
+*/
+.qr-code .qr-image {
+    width: 150px; /*adjust the size as needed */
+    object-fit: cover; 
+    aspect-ratio: 1 / 1;
+    margin: auto; 
+    display: block; 
+}
+
+.qr-code {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-basis: 30%; /*adjust margins*/
+}
+
+.phone-adjust .phone-image {
+    width: 200px; /*adjust the size as needed */
+    object-fit: cover; 
+    margin: auto; 
+    display: block; 
+}
+
+.phone-adjust {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-basis: 0%; /*adjust margins*/
+} 
 

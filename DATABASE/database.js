@@ -6,7 +6,6 @@ function connectToDatabase() {
     host: "localhost",
     user: "root",
     password: "DemBoys!!!!"
-
   });
   con.connect(err => {
     setupDatabase(err);

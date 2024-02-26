@@ -1,11 +1,14 @@
 
 var mysql = require('mysql2');
 var con;
+const config = require("../CONFIG/db.config.js");
+
 function connectToDatabase() {
   con = mysql.createConnection({
+
     host: "localhost",
-    user: "liberio",
-    password: "DemBoys"
+    user: "root",
+    password: "DemBoys!!!!"
   });
   con.connect(err => {
     setupDatabase(err);

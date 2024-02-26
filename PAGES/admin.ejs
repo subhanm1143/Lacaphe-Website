@@ -8,177 +8,24 @@
         <title>Admin Page</title>
     </head>
     <body>
-        <section>
-            <form id="Signitare Drinks" onsubmit ="return false">
-                <fieldset>
-                <table>
-                    <tr>
-                        <td><Label >Drink image</label></td>
-                        <td><Label >Drink name</label></td>
-                        <td><Label f>Drink description</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name ="Drink img1" type = "file" id="img1"/></td>
-                        <td><input name ="Drink1" id="Drink1"/></td>
-                        <td><textarea name ="Drink desc1" id="desc1"></textarea></td> 
-                    </tr>
-                    <tr>
-                        <td><input name ="Drink img2" type = "file" id="img2"/></td>
-                        <td><input name ="Drink2" id="Drink2"/></td>   
-                        <td><textarea name ="Drink desc.2" id="desc2"></textarea></td>  
-                    </tr>
-                    <tr>
-                        <td><input name ="Drink img3" type = "file" id="img3"/></td>
-                        <td><input name ="Drink3" id="Drink3"/></td>
-                        <td><textarea name ="Drink desc.3" id="desc3"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td><input name ="Drink img4" type = "file" id="img4"/></td>
-                        <td><input name ="Drink4" id="Drink4"/></td>
-                        <td><textarea name ="Drink desc.4" id="desc4"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td><input name ="Drink img5" type = "file" id="img5" /></td>
-                        <td><input name ="Drink5" id="Drink5"/></td>
-                        <td><textarea name ="Drink desc.5" id="desc5"></textarea></td>
-                    </tr>
-                </table>
-                    <p>
-                        <input type="submit" value="Submit Changes" onclick=updateSignatureDrinks()>
-                        <input type="reset" value ="Cancel" >
-                    </p>
-                </fieldset>
-            </form>
-            <p>Rough Preview of Signature Drinks<p>
-                <table>
-                    <tr>
-                        <td><Label>Drink name</label></td>
-                        <td><Label>Drink description</label></td>
-                    </tr>
-                    <tr>
-                        <td><Label  id="prevDrink1"></Label></td>
-                        <td><p  id="prevdesc1"></p></td> 
-                    </tr>
-                    <tr>
-                        <td><p id="prevDrink2"></p></td>   
-                        <td><p  id="prevdesc2"></p></td>  
-                    </tr>
-                    <tr>
-                        <td><p  id="prevDrink3"></p></td>
-                        <td><p  id="prevdesc3"></p></td>
-                    </tr>
-                    <tr>
-                        <td><p  id="prevDrink4"></p></td>
-                        <td><p  id="prevdesc4"></p></td>
-                    </tr>
-                    <tr>
-                        <td><p  id="prevDrink5"></p></td>
-                        <td><p id="prevdesc5"></p></td>
-                    </tr>
-                </table>
+        <div class="rounded" id="add-drink">
+            <h1 style="margin-left: 50px; margin-right: 50px;">Add Drink</h1>
+            <hr>
+            <!--TODO: Make these rows look nice and centered-->
+            <table>
+                <tr>
+                    <td>Select Image</td>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Price</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="file" id="fileUpload" name="fileUpload" accept="image/*">
+                    </td>
 
-            <form id="Menu Items" onsubmit ="return false">
-                <fieldset>
-                <table>
-                    <tr>
-                        <td><Label >Coffe Name</label></td>
-                        <td><Label>Coffe Description</label></td>
-                        <td><Label>Tea and Milk Name</label></td>
-                        <td><Label>Tea and Milk Description</label></td>
-                        <td><Label >Ice Blend Name</label></td>
-                        <td><Label>Ice Blend Description</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name ="cn"  id="cn1"/></td>
-                        <td><textarea name ="cd" id="cd1"></textarea></td> 
-                        <td><input name ="tmn" id="tm1"/></td>
-                        <td><textarea name ="tmd" id="tmd1"></textarea></td>
-                        <td><input name ="ibn"  id="ib1"/></td>
-                        <td><textarea name ="ibd" id="ibd1"></textarea></td> 
-                        
-                    </tr>
-                    <tr>
-                        <td><input name ="cn"  id="cn2"/></td>
-                        <td><textarea name ="cd" id="cd2"></textarea></td> 
-                        <td><input name ="tmn" id="tm2"/></td>
-                        <td><textarea name ="tmd" id="tmd2"></textarea></td>
-                        <td><input name ="ibn"  id="ib2"/></td>
-                        <td><textarea name ="ibd" id="ibd2"></textarea></td> 
-                    </tr>
-                    <tr>
-                        <td><input name ="cn"  id="cn3"/></td>
-                        <td><textarea name ="cd" id="cd3"></textarea></td> 
-                        <td><input name ="tmn" id="tm3"/></td>
-                        <td><textarea name ="tmd" id="tmd3"></textarea></td>
-                        <td><input name ="ibn"  id="ib3"/></td>
-                        <td><textarea name ="ibd" id="ibd3"></textarea></td> 
-                    </tr>
-                    <tr>
-                        <td><input name ="cn"  id="cn4"/></td>
-                        <td><textarea name ="cd" id="cd4"></textarea></td> 
-                        <td><input name ="tmn" id="tm4"/></td>
-                        <td><textarea name ="tmd" id="tmd4"></textarea></td>
-                        <td><input name ="ibn"  id="ib4"/></td>
-                        <td><textarea name ="ibd" id="ibd4"></textarea></td> 
-                    </tr>
-                </table>
-                    <p>
-                        <input type="submit" value="Submit Changes" onclick="updateMenu()">
-                        <input type="reset" value ="Cancel">
-                    </p>
-                </fieldset>
-            </form>
-            <p>Rough Preview of Menu<p>
-                <table>
-                    <tr>
-                        <td><Label >Coffe Name</label></td>
-                        <td><Label>Coffe Description</label></td>
-                        <td><Label>Tea and Milk Name</label></td>
-                        <td><Label>Tea and Milk Description</label></td>
-                        <td><Label >Ice Blend Name</label></td>
-                        <td><Label>Ice Blend Description</label></td>
-                    </tr>
-                    <tr>
-                        <td><p  id="prevCn1"></p></td>
-                        <td><p  id="prevCd1"></p></td>
-                        <td><Label  id="prevTmn1"></Label></td>
-                        <td><p  id="prevTmd1"></p></td>
-                        <td><Label  id="prevIbn1"></Label></td>
-                        <td><p  id="prevIbdesc1"></p></td> 
-                    </tr>
-                    <tr>
-                        <td><p  id="prevCn2"></p></td>
-                        <td><p  id="prevCd2"></p></td>
-                        <td><Label  id="prevTmn2"></Label></td>
-                        <td><p  id="prevTmd2"></p></td>
-                        <td><Label  id="prevIbn2"></Label></td>
-                        <td><p  id="prevIbdesc2"></p></td>  
-                    </tr>
-                    <tr>
-                        <td><p  id="prevCn3"></p></td>
-                        <td><p  id="prevCd3"></p></td>
-                        <td><Label  id="prevTmn3"></Label></td>
-                        <td><p  id="prevTmd3"></p></td>
-                        <td><Label  id="prevIbn3"></Label></td>
-                        <td><p  id="prevIbdesc3"></p></td> 
-                    </tr>
-                    <tr>
-                        <td><p  id="prevCn4"></p></td>
-                        <td><p  id="prevCd4"></p></td>
-                        <td><Label  id="prevTmn4"></Label></td>
-                        <td><p  id="prevTmd4"></p></td>
-                        <td><Label  id="prevIbn4"></Label></td>
-                        <td><p  id="prevIbdesc4"></p></td> 
-                    </tr>
-                    <tr>
-                        <td><p  id="prevCn5"></p></td>
-                        <td><p  id="prevCd5"></p></td>
-                        <td><Label  id="prevTmn5"></Label></td>
-                        <td><p  id="prevTmd5"></p></td>
-                        <td><Label  id="prevIbn5"></Label></td>
-                        <td><p  id="prevIbdesc5"></p></td> 
-                    </tr>
-                </table>
-        </sections>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>

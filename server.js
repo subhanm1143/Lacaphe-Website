@@ -1,10 +1,15 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const app = express();
 const port = 3000;
 const db = require('./DATABASE/database'); 
 const path = require('path');
+const config = require("./CONFIG/auth.config");
+var jwt = require("jsonwebtoken");
+const cookieParser = require('cookie-parser');
+const {verifyToken} = require('./MIDDLEWARE/authjwt.js');
 app.use(express.static(path.join(__dirname, 'STYLES')))
 app.use(express.static(path.join(__dirname, 'PHOTOS')))
 app.use(express.static(path.join(__dirname, 'ICONS')))
@@ -13,7 +18,15 @@ app.use(express.static(path.join(__dirname, 'COMPONENTS')))
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/PAGES'));
 
+
+var corsOptions ={
+  origin: 'http://localhost:3001'
+};
+//enable middleware
+app.use(cors(corsOptions));
+
 app.use(express.json());
+app.use(cookieParser());
 //test
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
@@ -41,6 +54,20 @@ app.post('/login', async (req, res) => {
 
     const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?,?,?)";
 
+    //create a local access token for the user
+    try{
+      const user ={userId,email};
+      const accessToken = jwt.sign(user,config.access_secret,
+        {algorithm: 'HS256', expiresIn:'15m'});
+      const refreshToken = jwt.sign(user,config.refresh_secret,
+        {algorithm: 'HS256',expiresIn:'120m'});
+      res.cookie('refresh_token',refreshToken,{httpOnly:true});
+      res.json({accessToken,refreshToken});
+    }
+    catch(error){
+      res.status(401).json({error:error.message})
+    }
+    
   
     db.getCon().query(insertUserSql, [userId , email, hashedPassword], (err, result) => {
       if (err) {
@@ -49,9 +76,9 @@ app.post('/login', async (req, res) => {
         return;
       }
 
-      res.send('User registered successfully');
+      //res.send('User registered successfully');
     });
-
+    
   } catch (error) {
     console.error('Error during registration:', error);
     res.status(500).send('Error during registration');
@@ -143,3 +170,12 @@ db.connectToDatabase(function(err) {
     }
   });
 });
+
+//test authorization
+//,function(req,res){verifyToken}
+app.post('/tokenTest',(req, res) => {
+  res.json("testing authentiification")
+})
+app.get('/tokenTest',verifyToken,verifyToken,(req, res) => {
+  res.json("authoriztion worked")
+})

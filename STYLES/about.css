@@ -100,20 +100,24 @@ body {
 
     align-items: center;
     background-color: chocolate;
+   /* padding: 20px;
 
-    margin: 20px;
+    /*  margin: 20px;
     padding: 20px;
-    background-color: white;
+   /* background-color: white;*/
 }
 .content-section div,
 .content-section img {
 
-    flex-basis: 48%;
+    flex-basis: 49%;
 
 }
+.content-section p,h2 {
+    padding: 20px; /* Adjust the padding as needed */
+}
+
 .content-section img {
-    max-width: 100%;
-    height: auto;
+    padding: 0; /* This ensures that images have no padding */
 }
 .owners-section {
     display: flex;
@@ -121,18 +125,26 @@ body {
 
     align-items: center;
     background-color: sandybrown;
+  /*  padding: 20px;
 
-    margin: 20px;
-    padding: 20px;
-    background-color: #e2e2e2;
+
+    /* margin: 20px;
+   background-color: #e2e2e2;*/
 }
 .owners-section div,
 .owners-section img {
-    flex-basis: 48%;
+    flex-basis: 49%;
 }
 .owners-section img {
     max-width: 100%;
     height: auto;
+}
+.owners-section p,h2 {
+    padding: 20px; /* Adjust the padding as needed */
+}
+
+.owners-section img {
+    padding: 0; /* This ensures that images have no padding */
 }
 .gallery {
     display: flex;

@@ -1,13 +1,3 @@
-body {
-    margin: 0px;
-    padding: 0px;
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column;
-}
-
-
 /* ---- Popup Start ------ */
 
 @keyframes slideDown {
@@ -83,12 +73,17 @@ body {
 
 /* ---- Header Start ------ */
 
-.header{
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
+}
+.header {
     background-image: url('about_page_photos_lecaphe/OurStory.jpg'); /* Placeholder */
-    background-size:cover;
-    background-position-y: -1000px;
-    background-repeat: no-repeat;
-    height: 1000px;
+    background-size: cover;
+    background-position: left 55%; 
+    height: 80vh; 
 }
 .top {
     display: flex;
@@ -97,26 +92,23 @@ body {
     height: 400px;
     padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top*/
 }
-
 .nav-bar {
     list-style-type: none;
     display: flex;
     gap: 30px;
 }
-
 .logo {
     width: 75px;
     height: 120px;
     margin: 0;
 }
-
-.nav-bar,
-li {
+.nav-bar, li {
     color: white;
 }
 .nav-bar li:last-child {
     margin-top: -7px; 
 }
+
 
 .nav-bar-link {
     text-decoration: none;
@@ -132,9 +124,10 @@ li {
 .nav-bar-link:hover p {
     transform: scale(0.9);
 }
+
 .inside_header {
     position: absolute;
-    top: 24%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;

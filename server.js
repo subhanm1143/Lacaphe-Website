@@ -13,8 +13,6 @@ const port = 3000;
 const db = require('./DATABASE/database'); 
 const path = require('path');
 const config = require("./CONFIG/auth.config");
-var jwt = require("jsonwebtoken");
-const cookieParser = require('cookie-parser');
 const {verifyToken} = require('./MIDDLEWARE/authjwt.js');
 app.use(express.static(path.join(__dirname, 'STYLES')))
 app.use(express.static(path.join(__dirname, 'PHOTOS')))

@@ -54,7 +54,8 @@ function createUserLoginTable(){
   CREATE TABLE UserLogin (
     uuid VARCHAR(36) PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(255)
   )`;
   con.query(userLoginTable, function (err) {
     if (err) throw err;
@@ -62,6 +63,7 @@ function createUserLoginTable(){
   })
 
 }
+
 function populateDrinktable(){
   var insertsql = "INSERT INTO Drinks(name, image,price,type, description) VALUES('boba tea','https://www.unionsquareawards.org/wp-content/uploads/2019/09/images3904-5d882e0c1594c.jpg',2.50,'t', 'desc 1'),"
     + "('lychee Tea','https://s3-media0.fl.yelpcdn.com/bphoto/Z0nZF9zYTaMVT5nbbGuxDA/o.jpg',3.75, 't', 'desc 2'),"

@@ -23,8 +23,8 @@ body {
     gap: 30px;
 }
 .logo {
-    width: 75px;
-    height: 120px;
+    width: 150px;
+    height: 240px;
     margin: 0;
 }
 .nav-bar, li {
@@ -51,6 +51,7 @@ body {
 }
 
 /* --------- Footer Start --------- */
+
 
 footer {
     background-color: #000;
@@ -117,29 +118,41 @@ footer {
     padding-top: 30px;
 }
 
-.quote-section>button {
+.quote-section>p {
+    color: #fff;
+    font-size: large;
+}
+
+.translation {
+    padding-top: 5px;
+}
+
+.quote-section>a>button {
     display: inline-block;
     padding: 15px 25px;
     font-size: 15px;
     cursor: pointer;
     text-align: center;
-    text-decoration: none;
+    text-decoration-line: none;
     outline: none;
     color: #fff;
-    background-color: #1f2937;
+    background-color: #B4ADA1;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.562);
+    font-weight: bold;
+    margin-top: 7px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.quote-section>button:hover {
+.quote-section>a>button:hover {
     transform: scale(0.9);
 }
 
 /* ----------- for Photo collection divs below ------------ */
 .photo-collection {
     display: flex;
-    /* height: 700px; */
 }
 .container {
     flex-wrap: wrap;
@@ -197,7 +210,7 @@ footer {
 
 .featured-column {
     float: left;
-    width: 33.3%;
+    width: 27%;
     margin-bottom: 16px;
     padding: 0 8px;
     transition: transform 0.3s ease;
@@ -224,10 +237,15 @@ footer {
 }
 
 .card-text {
-    padding: 0 16px;
     font-weight: bold;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
+
 
 .card-text::after,
 .featured-row::after {
@@ -240,79 +258,61 @@ footer {
 /*------------ Order Online Div below ---------------*/
 
 .order-online-section {
-    width: auto;
-    /* height: 400px; */
-    padding-top: 8em;
-    padding-bottom: 8em;
-    background-color: #919388;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-
-}
-/* use padding to move around divs */
-.oos-title-div {
-    width: 20%;
-    padding-left: 30%; 
+    background-color: #919388;
+    padding: 50px; 
 }
 
-.oos-title {
-    font-family:'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif';
-    font-size: xx-large; 
-}
-
-.qr-code {
-    width: 30%;
-    
-}
-*/
-.qr-code .qr-image {
-    width: 150px; /*adjust the size as needed */
-    object-fit: cover; 
-    aspect-ratio: 1 / 1;
-    margin: auto; 
-    display: block; 
-}
-
-.qr-code {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    flex-basis: 30%; /*adjust margins*/
-}
-
-.phone-adjust .phone-image {
-    width: 200px; /*adjust the size as needed */
-    object-fit: cover; 
-    margin: auto; 
-    display: block; 
-}
-
-.oos-btn {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 15px;
-    cursor: pointer;
+.text-block {
     text-align: center;
+    color: black;
+    max-width: 300px; 
+}
+
+.text-block h2 {
+    font-size: 2em; 
+    margin-bottom: 0.5em;
+}
+
+.text-block p {
+    font-size: 1.5em; 
+    margin: 0; 
+}
+
+.order-button {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 10px 20px;
+    background-color: #7b7c74; 
+    color: white;
     text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #B4ADA1;
-    border: none;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.562);
     font-weight: bold;
-
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.oos-btn:hover {
-    transform: scale(0.9);
+.order-button:hover {
+    background-color: #333; /*Darker shade on hover */
 }
-.phone-adjust {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    flex-basis: 0%; /*adjust margins*/
-} 
 
+.phone-image img { 
+    width: 100%;
+    height: auto; 
+    display: block; 
+    margin: auto;
+}
+
+.qr-code img {
+    width: 200px;
+    height: auto; 
+    display: block; 
+    margin: auto;
+}
+
+.qr-code p {
+    text-align: center;
+    color: white;
+    margin-top: 10px; /*Space between the QR code image and text */
+}

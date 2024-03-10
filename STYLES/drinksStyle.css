@@ -57,7 +57,7 @@ body {
 
 #popup p {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 30px;
     margin: 15px 15px 5px 15px;
@@ -105,8 +105,8 @@ body {
 }
 
 .logo {
-    width: 75px;
-    height: 120px;
+    width: 150px;
+    height: 240px;
     margin: 0;
 }
 
@@ -174,7 +174,7 @@ li {
 .drinks-section {
     display: flex;
     flex-direction: column;
-    background-color: chocolate;
+    background-color: #919388;
 }
 
 #drink-categories {
@@ -207,7 +207,7 @@ li {
 */
 
 .category:hover {
-    background-color: #fc9f3c;
+    background-color: #919388;
 }
 
 .category.selected {

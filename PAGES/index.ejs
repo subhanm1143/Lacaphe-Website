@@ -10,11 +10,14 @@
 </head>
 <!-- testing -->
 <body>
+    <!-- This section will pull the ejs from login.ejs -->
     <!--This is where the top half of the website reside. It Contains the logo of the site, nav bad, and shop photo as background.-->
     <div class="header">
         <div class="top">
             <ul>
-                <img class="logo" src="./logo_white.png"  alt= "Lacaphe Placeholder Logo">
+                <a class="nav-bar-link" href="/">
+                    <p><img class="logo" src="./logo_white.png"  alt= "Lacaphe Placeholder Logo"></p>
+                </a>
             </ul>
             <ul class="nav-bar">
                 <li>
@@ -56,10 +59,8 @@
                 <!--using a logo to connect like showen in Figma mockup -->
             </ul>
         </div>
+        <%- include('login.ejs') %> <!--THIS MOVES THE header-->
     </div>
-
-    <!-- This section will pull the ejs from login.ejs -->
-    <%- include('login.ejs') %>
 
     <!-- This is the div with the quote section that also leads to the "Get to Know us" or "About" page. -->
     <div class="quote-section">

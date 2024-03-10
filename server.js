@@ -1,12 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 
-//const jwt = require('jsonwebtoken');
+
 
 const cors = require('cors');
 
 const { v4: uuidv4 } = require('uuid');
-//const cookieParser = require('cookie-parser');
+
 
 const app = express();
 const port = 3000;
@@ -14,9 +14,13 @@ const db = require('./DATABASE/database');
 const path = require('path');
 const config = require("./CONFIG/auth.config");
 
-var jwt = require("jsonwebtoken");
+
+const {verifyToken} = require('./MIDDLEWARE/authjwt.js');
+
+  var jwt = require("jsonwebtoken");
 const cookieParser = require('cookie-parser');
 const authJwt = require('./MIDDLEWARE/authjwt.js');
+
 
 app.use(express.static(path.join(__dirname, 'STYLES')))
 app.use(express.static(path.join(__dirname, 'PHOTOS')))
@@ -62,6 +66,10 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
   
   res.render('login.ejs');
+});
+app.get('/review', (req, res) => {
+  
+  res.render('review.ejs');
 });
 
 // TODO: Temporary page, get rid of later

@@ -1,12 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 
-const jwt = require('jsonwebtoken');
+//const jwt = require('jsonwebtoken');
 
 const cors = require('cors');
 
 const { v4: uuidv4 } = require('uuid');
-const cookieParser = require('cookie-parser');
+//const cookieParser = require('cookie-parser');
 
 const app = express();
 const port = 3000;

@@ -205,6 +205,18 @@ app.get('/drinks', (req, res) => {
   res.render('drinks.ejs');
 });
 
+app.get('/drinks/all', (req, res) => {
+  let query = 'SELECT * FROM Drinks'
+  db.getCon().query(query, (error, result, fields) => {
+    if (error) {
+      res.status(500).send('Database Error :(');
+      console.error(err);
+      return;
+    }
+    res.json(result);
+  });
+});
+
 app.get('/drinks/list', (req, res) => {
   let type = req.query.type;
   let name = req.query.name;

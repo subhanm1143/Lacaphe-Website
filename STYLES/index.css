@@ -118,29 +118,41 @@ footer {
     padding-top: 30px;
 }
 
-.quote-section>button {
+.quote-section>p {
+    color: #fff;
+    font-size: large;
+}
+
+.translation {
+    padding-top: 5px;
+}
+
+.quote-section>a>button {
     display: inline-block;
     padding: 15px 25px;
     font-size: 15px;
     cursor: pointer;
     text-align: center;
-    text-decoration: none;
+    text-decoration-line: none;
     outline: none;
     color: #fff;
-    background-color: #1f2937;
+    background-color: #B4ADA1;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.562);
+    font-weight: bold;
+    margin-top: 7px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.quote-section>button:hover {
+.quote-section>a>button:hover {
     transform: scale(0.9);
 }
 
 /* ----------- for Photo collection divs below ------------ */
 .photo-collection {
     display: flex;
-    /* height: 700px; */
 }
 .container {
     flex-wrap: wrap;
@@ -198,7 +210,7 @@ footer {
 
 .featured-column {
     float: left;
-    width: 33.3%;
+    width: 27%;
     margin-bottom: 16px;
     padding: 0 8px;
     transition: transform 0.3s ease;
@@ -225,10 +237,15 @@ footer {
 }
 
 .card-text {
-    padding: 0 16px;
     font-weight: bold;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
+
 
 .card-text::after,
 .featured-row::after {

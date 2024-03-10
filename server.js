@@ -1,18 +1,19 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 
-const jwt = require('jsonwebtoken');
+
 
 const cors = require('cors');
 
 const { v4: uuidv4 } = require('uuid');
-const cookieParser = require('cookie-parser');
+
 
 const app = express();
 const port = 3000;
 const db = require('./DATABASE/database'); 
 const path = require('path');
 const config = require("./CONFIG/auth.config");
+
 const {verifyToken} = require('./MIDDLEWARE/authjwt.js');
 app.use(express.static(path.join(__dirname, 'STYLES')))
 app.use(express.static(path.join(__dirname, 'PHOTOS')))

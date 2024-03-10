@@ -2,14 +2,14 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
 }
 .header{
     background-image: url('LACAPHEPIC1.JPG'); /* Placeholder */
     background-size: cover;
-    background-position-y: -650px;
+    background-position-y: -1000px; /* made the header bigger*/
     background-repeat: no-repeat;
-    height: 500px;
+    height: 1000px;
 }
 .top {
     display: flex;
@@ -81,7 +81,7 @@ footer {
     text-decoration: none;
     color: white; 
     padding-right: 10px;
-    font-family: Georgia, sans-serif; /* Change font-family */
+    font-family: Georgia, sans-serif; /*Change font-family*/
     line-height: 1.5; /* Increase line height */
 }
 
@@ -89,14 +89,28 @@ footer {
     margin-top: 0;
     padding-bottom: 10px;
 }
+.footer-nav-bar {
+    text-align: center;
+    background-color: #000; /* Set the background color of the navigation bar */
+}
+
+.footer-nav-bar a, .footer-nav-bar a:visited {
+    color: white; /* Sets the text color for links */
+    text-decoration: none; /* Removes underline from links */
+    margin: 0 10px; /* Spaces out links */
+}
+
+.footer-nav-bar a:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}
+
 
 
  /* ----------for quote section below----------- */
 .quote-section {
-    background-color: chocolate;
+    background-color: #919388;
     display: flex;
     width: auto;
-    height: 50px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -104,10 +118,41 @@ footer {
     padding-top: 30px;
 }
 
+.quote-section>p {
+    color: #fff;
+    font-size: large;
+}
+
+.translation {
+    padding-top: 5px;
+}
+
+.quote-section>a>button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration-line: none;
+    outline: none;
+    color: #fff;
+    background-color: #B4ADA1;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.562);
+    font-weight: bold;
+    margin-top: 7px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.quote-section>a>button:hover {
+    transform: scale(0.9);
+}
+
 /* ----------- for Photo collection divs below ------------ */
 .photo-collection {
     display: flex;
-    height: 700px;
 }
 .container {
     flex-wrap: wrap;
@@ -124,40 +169,27 @@ footer {
 /* ----------Featured Drink Div below---------- */
 
 .featured-section {
-    width: auto;
-    height: 600px;
-    background-color: sandybrown;
-}
-.title-div {
-    display: flex;
-    padding-top: 30px;
-    justify-content: center;
-}
-.title {
-    margin: 0;
-    font-size: xxx-large;
-}
-
-/* ----------Featured Drink Div below---------- */
-.featured-section {
     padding-top: 30px;
     padding-bottom: 50px;
     padding-left: 15%;
     padding-right: 15%;
-    background-color: sandybrown;
+    background-color: #B4ADA1;
+    
 }
 
-.featured-row {
-    display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: center;
-}
-
-.title {
+.featured-section > .title {
+    color: white;
     margin: 0;
     padding-bottom: 20px;
     font-size: xxx-large;
     display: flex;
+    justify-content: center;
+}
+
+/* Mess around with wrap option to see which one fits better. */
+.featured-row {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -178,7 +210,7 @@ footer {
 
 .featured-column {
     float: left;
-    width: 33.3%;
+    width: 27%;
     margin-bottom: 16px;
     padding: 0 8px;
     transition: transform 0.3s ease;
@@ -205,8 +237,15 @@ footer {
 }
 
 .card-text {
-    padding: 0 16px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
+
 
 .card-text::after,
 .featured-row::after {
@@ -216,13 +255,14 @@ footer {
 }
 
 
-
 /*------------ Order Online Div below ---------------*/
 
 .order-online-section {
     width: auto;
-    height: 400px;
-    background-color: grey;
+    /* height: 400px; */
+    padding-top: 8em;
+    padding-bottom: 8em;
+    background-color: #919388;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,10 +270,67 @@ footer {
 }
 /* use padding to move around divs */
 .oos-title-div {
-    width: 50%;
-    padding-left: 100px;
+    width: 20%;
+    padding-left: 30%; 
 }
+
+.oos-title {
+    font-family:'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif';
+    font-size: xx-large; 
+}
+
 .qr-code {
-    width: 50%;
+    width: 30%;
+    
 }
+*/
+.qr-code .qr-image {
+    width: 150px; /*adjust the size as needed */
+    object-fit: cover; 
+    aspect-ratio: 1 / 1;
+    margin: auto; 
+    display: block; 
+}
+
+.qr-code {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-basis: 30%; /*adjust margins*/
+}
+
+.phone-adjust .phone-image {
+    width: 200px; /*adjust the size as needed */
+    object-fit: cover; 
+    margin: auto; 
+    display: block; 
+}
+
+.oos-btn {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #B4ADA1;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.562);
+    font-weight: bold;
+
+}
+
+.oos-btn:hover {
+    transform: scale(0.9);
+}
+.phone-adjust {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-basis: 0%; /*adjust margins*/
+} 
 

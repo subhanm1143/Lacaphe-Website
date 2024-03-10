@@ -37,6 +37,7 @@
     transition: top 0ms ease-in-out 200ms,
                 opacity 200ms ease-in-out 0ms,
                 transform 200ms ease-in-out 0ms;
+    z-index: 10;
 }
 
 .popup.active{
@@ -128,6 +129,7 @@
     transition: top 0ms ease-in-out 200ms,
                 opacity 200ms ease-in-out 0ms,
                 transform 200ms ease-in-out 0ms;
+    z-index: 11;
 }
 
 .create-popup.active{
@@ -156,7 +158,7 @@
 .create-popup .form h2{
     text-align: center;
     color: #222;
-    margin: 10px 0px 20px;
+    margin: 10px 0px 10px;
     font-size: 25px;
 }
 
@@ -192,3 +194,15 @@
     border-radius: 10px;
     cursor: pointer;
 }
+.popup-message {
+    display: none;
+    position: relative; /* Change position to relative */
+    top: 5px; /* Adjust the distance from the top */
+    padding: 10px 20px;
+    background-color: #ff6161;
+    border: 2px solid red;
+    border-radius: 5px;
+    z-index: 1200;
+    font-size: 14px;
+}
+

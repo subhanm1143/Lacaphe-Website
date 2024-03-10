@@ -14,7 +14,14 @@ const db = require('./DATABASE/database');
 const path = require('path');
 const config = require("./CONFIG/auth.config");
 
+
 const {verifyToken} = require('./MIDDLEWARE/authjwt.js');
+
+  var jwt = require("jsonwebtoken");
+const cookieParser = require('cookie-parser');
+const authJwt = require('./MIDDLEWARE/authjwt.js');
+
+
 app.use(express.static(path.join(__dirname, 'STYLES')))
 app.use(express.static(path.join(__dirname, 'PHOTOS')))
 app.use(express.static(path.join(__dirname, 'ICONS')))
@@ -66,39 +73,23 @@ app.get('/review', (req, res) => {
 });
 
 // TODO: Temporary page, get rid of later
-app.get('/admin', (req, res) => {
+app.get('/admin',[authJwt.verifyToken,authJwt.verifyAdmin],(req, res) => {
   res.render('admin.ejs');
 });
-const secretKey = "yourSecretKey";
+const secretKey = config.access_secret;
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const userId = uuidv4();
     const hashedPassword = await bcrypt.hash(password, 10);
+    const role = "user"
 
+    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password,role) VALUES (?,?,?,?)";
 
-    //const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?, ?, ?)";
-    db.getCon().query(insertUserSql, [userId, email, hashedPassword], (err, result) => {
-
-
-    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?,?,?)";
-
-    //create a local access token for the user
-    try{
-      const user ={userId,email};
-      const accessToken = jwt.sign(user,config.access_secret,
-        {algorithm: 'HS256', expiresIn:'15m'});
-      const refreshToken = jwt.sign(user,config.refresh_secret,
-        {algorithm: 'HS256',expiresIn:'120m'});
-      res.cookie('refresh_token',refreshToken,{httpOnly:true});
-      res.json({accessToken,refreshToken});
-    }
-    catch(error){
-      res.status(401).json({error:error.message})
-    }
+   
     
   
-    db.getCon().query(insertUserSql, [userId , email, hashedPassword], (err, result) => {
+    db.getCon().query(insertUserSql, [userId , email, hashedPassword,role], (err, result) => {
 
       if (err) {
         console.error('Error inserting new user:', err);
@@ -107,12 +98,6 @@ app.post('/login', async (req, res) => {
 
       //res.send('User registered successfully');
     });
-
-
-      //res.send('User registered successfully');
-    });
-    
-
   } catch (error) {
     console.error('Error during registration:', error);
     //res.status(500).send('Error during registration');
@@ -132,10 +117,11 @@ app.post('/login', async (req, res) => {
       }
 
       const user = users[0];
+  
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (isMatch) {
-        const accessToken = jwt.sign({  email: user.email }, secretKey, { expiresIn: '1h' });
+        const accessToken = jwt.sign({  email: user.email ,role: user.role}, secretKey, { expiresIn: '1h' });
         res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
         console.log("Match");
         return res.json({ accessToken }); // Use return here
@@ -196,19 +182,24 @@ app.post('/adminLogin', async (req, res) => {
     const userId = uuidv4();
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    const role ="admin"
 
-
-    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?,?,?)";
+    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password,role) VALUES (?,?,?,?)";
 
   
-    db.getCon().query(insertUserSql, [userId , email, hashedPassword], (err, result) => {
+    db.getCon().query(insertUserSql, [userId , email, hashedPassword,role], (err, result) => {
       if (err) {
         console.error('Error inserting new user:', err);
         res.status(500).send('Error during registration');
         return;
       }
 
-      res.send('User registered successfully');
+      const accessToken = jwt.sign({  email: email ,role: role}, secretKey, { expiresIn: '1h' });
+      res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+      console.log("Match");
+      res.json( accessToken ); // Use return here
+
+      //res.send('User registered successfully');
     });
 
   } catch (error) {
@@ -220,6 +211,18 @@ app.post('/adminLogin', async (req, res) => {
 app.get('/drinks', (req, res) => {
   
   res.render('drinks.ejs');
+});
+
+app.get('/drinks/all', (req, res) => {
+  let query = 'SELECT * FROM Drinks'
+  db.getCon().query(query, (error, result, fields) => {
+    if (error) {
+      res.status(500).send('Database Error :(');
+      console.error(err);
+      return;
+    }
+    res.json(result);
+  });
 });
 
 app.get('/drinks/list', (req, res) => {
@@ -276,6 +279,10 @@ db.connectToDatabase(function(err) {
 app.post('/tokenTest',(req, res) => {
   res.json("testing authentiification")
 })
-app.get('/tokenTest',verifyToken,verifyToken,(req, res) => {
+/*app.get('/tokenTest',verifyToken,verifyToken,(req, res) => {
+  res.json("authoriztion worked")
+})*/
+
+app.get('/tokenTest',[authJwt.verifyToken,authJwt.verifyAdmin],(req, res) => {
   res.json("authoriztion worked")
 })

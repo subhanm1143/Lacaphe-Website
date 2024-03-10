@@ -14,6 +14,45 @@ body {
     background-color: rgb(216, 197, 161); 
 }
 
+#menu-drinks {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(216, 197, 161); 
+}
+
+.name-side {
+    height: auto;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn-side {
+    height: auto;
+    width: 500px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+}
+
+.drink {
+    border: 5px solid black; 
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
 
 table {
     table-layout: fixed;
@@ -23,7 +62,8 @@ table {
 td, th {
     text-align: center;
     vertical-align: middle;
-    
+    width: auto;
+    /* margin-left: 1000px; */
 }
 
 .rounded {
@@ -34,6 +74,22 @@ hr {
     width: 100px;
 }
 
+#collapsed {
+    display: flex;
+    flex-direction: row;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* td {
+    margin-left: 10px;
+    margin-right: 20px;
+} */
 
 
 

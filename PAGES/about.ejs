@@ -54,12 +54,15 @@
                         </a>
                 </li>
             </ul>
+            <%- include('login.ejs') %> 
         </div>
         <div class="inside_header">
             <h1>ABOUT</h1>
         </div>
     </div>
 
+    <!-- This section will pull the ejs from login.ejs -->
+    <%- include('login.ejs') %>    
 
 
     <!--img are just placeholders for now until we get desired images-->
@@ -135,5 +138,6 @@
             <a href="/login">Login</a>
         </p>
     </footer>  
+    <script src="login.ejs" defer></script>
 </body>
 </html>

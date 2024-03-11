@@ -20,6 +20,10 @@
 
         <div class="form">
             <h2>Login</h2>
+            <div id="invalid-popup-login" class="popup-message">
+                <div id="close-btn" class="close-btn">&times;</div>
+                <p>Email or Password Incorrect</p>
+            </div>
             <div class="form-element">
                 <label for = "email">Email</label>
                 <input type="text" id="email" placeholder="Enter email">
@@ -54,19 +58,27 @@
 
         <div class="form">
             <h2>Create Account</h2>
+            <div id="create-invalid-popup" class="popup-message">
+                <div id="close-btn" class="close-btn">&times;</div>
+                <p>Email or password is invalid. Please try again.</p>
+            </div>
+            <div id="create-invalid-popup-password" class="popup-message">
+                <div id="close-btn" class="close-btn">&times;</div>
+                <p>Passwords do not match or not long enough.</p>
+            </div>
             <div class="form-element">
-                <label for = "email">Enter Email</label>
-                <input type="text" id="email" placeholder="Enter email">
+                <label for = "email-create">Enter Email</label>
+                <input type="text" id="email-create" placeholder="Enter email">
             </div>
 
             <div class="form-element">
-                <label for = "password">Enter Password</label>
-                <input type="password" id="password" placeholder="Enter password">
+                <label for = "create-password">Enter Password</label>
+                <input type="password" id="create-password" placeholder="Enter password">
             </div>
 
             <div class="form-element">
                 <label for = "confirm-password">Enter Password Again</label>
-                <input type="confirm-password" id="confirm-password" placeholder="Enter password again">
+                <input type="password" id="confirm-password" placeholder="Enter password again">
             </div>
 
             <div id="post-createAcc" class="form-element"> 

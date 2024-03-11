@@ -72,6 +72,11 @@ app.get('/review', (req, res) => {
   res.render('review.ejs');
 });
 
+app.get('/userLogout', (req, res) => {
+  
+    res.render('userLogout.ejs');
+  });
+
 // TODO: Temporary page, get rid of later
 app.get('/admin',[authJwt.verifyToken,authJwt.verifyAdmin],(req, res) => {
   res.render('admin.ejs');

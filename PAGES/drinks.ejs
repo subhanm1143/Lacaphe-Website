@@ -81,6 +81,9 @@
             </div>
         </div>
     
+    <!-- This section will pull the ejs from login.ejs -->
+    <%- include('login.ejs') %>  
+
     <div class="drinks-section">
         <div id="drink-categories">
             <button class="category" id="sig-drinks-btn">
@@ -146,5 +149,6 @@
         </p>
     </footer>
     <script src="/drinksJS.js"></script>
+    <script src="login.ejs" defer></script>
 </body>
 </html>

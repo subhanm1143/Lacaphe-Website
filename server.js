@@ -62,6 +62,11 @@ app.get('/login', (req, res) => {
   res.render('login.ejs');
 });
 
+app.get('/userLogout', (req, res) => {
+  
+    res.render('userLogout.ejs');
+  });
+
 // TODO: Temporary page, get rid of later
 app.get('/admin', (req, res) => {
   res.render('admin.ejs');

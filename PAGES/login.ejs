@@ -42,7 +42,7 @@
             </div>
 
             <div id="sign" class="form-element">
-                <button>Sign in</button>
+                <button id = "signin-btn">Sign in</button>
                 <button id = "signout-btn">Sign Out</button>
             </div>
 
@@ -66,6 +66,10 @@
                 <div id="close-btn" class="close-btn">&times;</div>
                 <p>Passwords do not match or not long enough.</p>
             </div>
+            <div id="create-invalid-popup-email" class="popup-message">
+                <div id="close-btn" class="close-btn">&times;</div>
+                <p>Email has already been registered by another user.</p>
+            </div>
             <div class="form-element">
                 <label for = "email-create">Enter Email</label>
                 <input type="text" id="email-create" placeholder="Enter email">
@@ -87,6 +91,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/loginJS.js" defer></script>
 </body>
 

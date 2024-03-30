@@ -21,6 +21,7 @@ const {verifyToken} = require('./MIDDLEWARE/authjwt.js');
 const cookieParser = require('cookie-parser');
 const authJwt = require('./MIDDLEWARE/authjwt.js');
 
+const verifyNewAcount = require('./MIDDLEWARE/verifyNewAcount.js');
 
 app.use(express.static(path.join(__dirname, 'STYLES')))
 app.use(express.static(path.join(__dirname, 'PHOTOS')))
@@ -85,30 +86,6 @@ const secretKey = config.access_secret;
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    const userId = uuidv4();
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const role = "user"
-
-    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password,role) VALUES (?,?,?,?)";
-
-   
-    
-  
-    db.getCon().query(insertUserSql, [userId , email, hashedPassword,role], (err, result) => {
-
-      if (err) {
-        console.error('Error inserting new user:', err);
-        //return res.status(500).send('Error during registration');
-      }
-
-      //res.send('User registered successfully');
-    });
-  } catch (error) {
-    console.error('Error during registration:', error);
-    //res.status(500).send('Error during registration');
-  }
-  try {
-    const { email, password } = req.body;
     const findUserSql = "SELECT * FROM UserLogin WHERE email = ?";
 
     db.getCon().query(findUserSql, [email], async (err, users) => {
@@ -137,6 +114,33 @@ app.post('/login', async (req, res) => {
   } catch (error) {
     console.error('Error during login:', error);
     return res.status(500).send('Error during login'); // Use return here
+  }
+});
+
+app.post('/createAcount',verifyNewAcount.checkDuplicateEmail, async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const userId = uuidv4();
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const role = "user"
+
+    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password,role) VALUES (?,?,?,?)";
+
+   
+    
+  
+    db.getCon().query(insertUserSql, [userId , email, hashedPassword,role], (err, result) => {
+
+      if (err) {
+        console.error('Error inserting new user:', err);
+        return res.status(500).send('Error during registration');
+      }
+
+      res.send('User registered successfully');
+    });
+  } catch (error) {
+    console.error('Error during registration:', error);
+    res.status(500).send('Error during registration');
   }
 });
 

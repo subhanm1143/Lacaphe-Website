@@ -1,5 +1,6 @@
 //brings up login screen
 //document.querySelector("#show-login").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
+//const verifyNewAcount = require("./MIDDLEWARE/verifyNewAcount");
 
 document.querySelector("a.nav-bar-link[href='/login']").addEventListener("click", function(event){
     event.preventDefault(); // Prevent the default action of following the link
@@ -8,8 +9,19 @@ document.querySelector("a.nav-bar-link[href='/login']").addEventListener("click"
 
 
 //closes pop ups
-document.querySelector(".popup .close-btn").addEventListener("click", function(){document.querySelector(".popup").classList.remove("active");});
-document.querySelector(".create-popup .close-btn").addEventListener("click", function(){document.querySelector(".create-popup").classList.remove("active");});
+document.querySelector(".popup .close-btn").addEventListener("click", function(){
+    document.querySelector(".popup").classList.remove("active");
+    //clears login info when closed
+    document.getElementById('email').value = "";
+    document.getElementById('password').value = "";
+    });
+document.querySelector(".create-popup .close-btn").addEventListener("click", function(){
+    document.querySelector(".create-popup").classList.remove("active");
+    //clears login info when closed
+    document.getElementById('email-create').value = "";
+    document.getElementById('create-password').value = "";
+    document.getElementById('confirm-password').value = "";
+    });
 document.querySelector("#sign").addEventListener("click", function() {
     document.querySelector(".popup").classList.remove("active");
     
@@ -22,7 +34,11 @@ document.querySelector("#sign").addEventListener("click", function() {
 });
 
 //Brings up create screen
-document.querySelector("#createAcc").addEventListener("click", function(){document.querySelector(".create-popup").classList.add("active");});
+document.querySelector("#createAcc").addEventListener("click", function(){
+    document.querySelector(".popup").classList.remove("active");
+    document.querySelector(".create-popup").classList.add("active");
+    
+    });
 const emailInput = document.querySelector('#email');
 
 const passwordInput = document.querySelector('#password');
@@ -65,6 +81,28 @@ async function handleSignIn() {
         console.error('Error:', error);
     }
     
+}
+
+async function handleSignup(){
+    // Get the values from the email and password fields
+    const email = document.getElementById('email-create').value;
+    const password = document.getElementById('create-password').value;
+    console.log('Email:', email, 'Password:', password);
+    const userData = {
+        email: email,
+        password: password
+    };
+
+    try{
+        // Adds user to the database
+        const response = await axios.post('/createAcount', userData);
+
+        return response;
+    }
+    catch(error){
+        // Handle error (create acount failure)
+        console.error({message:'Error:', error});
+    }
 }
 async function handleSignOut() {
     try {
@@ -117,8 +155,26 @@ document.querySelector("#post-createAcc").addEventListener("click", function(eve
         return; // Exit function to prevent account creation
     }
     
+
     //Continue Acccount CREATION HERE
-    
+    handleSignup().then( res =>{
+        console.log(res);
+        //if signup fails
+        if(res == null){
+            document.getElementById('create-invalid-popup-email').style.display = 'block';
+            return; // Exit function to prevent account creation
+        }
+        else{
+            //close popup once acount is loged in
+            document.querySelector(".create-popup").classList.remove("active");
+            //remove login info from boxe's once closed
+            document.getElementById('email-create').value = "";
+            document.getElementById('create-password').value = "";
+            document.getElementById('confirm-password').value = "";
+            
+        }
+    });
+
 });
 
 document.getElementById('invalid-popup-login').addEventListener('click', function() {
@@ -128,6 +184,9 @@ document.getElementById('create-invalid-popup').addEventListener('click', functi
     this.style.display = 'none';
 });
 document.getElementById('create-invalid-popup-password').addEventListener('click', function() {
+    this.style.display = 'none';
+});
+document.getElementById('create-invalid-popup-email').addEventListener('click', function() {
     this.style.display = 'none';
 });
 // Add event listener to the Sign in button

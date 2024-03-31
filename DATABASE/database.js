@@ -8,7 +8,7 @@ function connectToDatabase() {
 
     host: "localhost",
     user: "root",
-    password: "DemBoys"
+    password: "DemBoys!!!!"
   });
   con.connect(err => {
     setupDatabase(err);
@@ -35,8 +35,14 @@ function setupDatabase(err) {
     if (err) throw err;
     console.log("User table dropped if it exits");
   })
+  var dropReviews = "DROP TABLE IF EXISTS Reviews"
+  con.query(dropReviews, function (err) {
+    if (err) throw err;
+    console.log("User table dropped if it exits");
+  })
   createDrinkTable();
   createUserLoginTable();
+  createReviewTable();
 }
 function createDrinkTable(){
   // 's' = signature drinks, 'c' = coffee, 't' = tea, 'i' = ice blended
@@ -46,6 +52,15 @@ function createDrinkTable(){
     console.log("Drink table created");
   })
   populateDrinktable();
+}
+function createReviewTable(){
+
+  var tablesql = "CREATE TABLE Reviews(id INT AUTO_INCREMENT PRIMARY KEY, review_text TEXT)";
+  con.query(tablesql, function (err) {
+    if (err) throw err;
+    console.log("Review table created");
+  })
+ // populateReviewTable(); // You should define this function to populate the Reviews table with initial data
 }
 function createUserLoginTable(){
 

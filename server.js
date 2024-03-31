@@ -255,7 +255,20 @@ app.get('/drinks/list', (req, res) => {
     res.json(result);
   });
 });
-
+app.post('/submit-review', async (req, res) => {
+  const reviewText = req.body.reviewText;
+  const insertSql = 'INSERT INTO Reviews (review_text) VALUES (?)';
+  
+  db.getCon().query(insertSql, [reviewText], function(err, result) {
+      if (err) {
+          console.error('Error inserting review:', err);
+          res.status(500).send('Error inserting review');
+          return;
+      }
+      console.log('Review inserted successfully:', result.insertId);
+      res.send('Review submitted successfully');
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

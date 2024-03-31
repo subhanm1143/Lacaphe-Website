@@ -96,21 +96,20 @@ app.post('/add-drink', upload.single('add-new-item-image'), (req, res) => {
   if (req.file) {
     image = '/drinksPNGS/' + req.file.filename;
     const query = 'INSERT INTO Drinks (name, description, price, type, image) VALUES (?, ?, ?, ?, ?)';
-    db.getCon().query(query, [name, description, price, drinkType, req.file.filename], (error, result) => {
+    db.getCon().query(query, [name, description, price, drinkType, image], (error, result) => {
       if (error) throw error;
-      console.log(SUCCESS_MSG);
+      res.send(SUCCESS_MSG);
+    });
+  } else {
+    const query = 'INSERT INTO Drinks (name, description, price, type) VALUES (?, ?, ?, ?)'
+
+    db.getCon().query(query, [name, description, price, drinkType], (error, result) => {
+      if (error) throw error;
+      res.send(SUCCESS_MSG);
     });
   }
 
   console.log(name, description, price, drinkType, image);
-
-  const query = 'INSERT INTO Drinks (name, description, price, type) VALUES (?, ?, ?, ?)'
-
-  db.getCon().query(query, [name, description, price, drinkType], (error, result) => {
-    if (error) throw error;
-    res.send(SUCCESS_MSG);
-  });
-
 
 })
 

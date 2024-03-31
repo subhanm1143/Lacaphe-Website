@@ -52,12 +52,13 @@ async function getItemByID(id, actionUponReceivingItem) {
 
 class Item {
     _menuItem;
+    _drinkName;
     constructor(menuItem) {
         this._menuItem = menuItem;
         this._createHTMLItem();
     }
 
-    async _refreshItem() {
+    async _refreshItem(displayName) {
         // let encodedId = encodeURIComponent(this._menuItem.id);
         // let url = '/drinks/list?id=' + encodedId;
         // let newItem = await fetch(url);
@@ -67,6 +68,7 @@ class Item {
         // })
         getItemByID(this._menuItem.id, (item) => {
             this._menuItem = item;
+            this._drinkName.textContent = this._menuItem.name + " (id:" + this._menuItem.id + ")";
         });
     }
 
@@ -78,9 +80,9 @@ class Item {
         let nameSide = document.createElement('div');
         nameSide.className = 'name-side';
         // nameSide.style.border = '5px solid red';
-        let drinkName = document.createElement('p');
-        drinkName.textContent = this._menuItem.name + " (id:" + this._menuItem.id + ")";
-        nameSide.appendChild(drinkName);
+        this._drinkName = document.createElement('p');
+        this._drinkName.textContent = this._menuItem.name + " (id:" + this._menuItem.id + ")";
+        nameSide.appendChild(this._drinkName);
         let btnSide = document.createElement('div');
         btnSide.className = 'btn-side';
         // btnSide.style.border = '5px solid red';
@@ -236,7 +238,7 @@ class Item {
                 // });
                 editForm.addEventListener('submit', (e) => handleFormSubmit(e, editForm, '/edit-drinks', 'PUT', () => {
                     editForm.remove();
-                    self._refreshItem();
+                    self._refreshItem(self._drinkName);
                 }));
 
                 drink.appendChild(editForm);
@@ -335,12 +337,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 let items = fetchItems();
-
-
-
-
-// for (let i = 0; i < items.length; i++) {
-//     console.log(items[i]);
-// }
 
 

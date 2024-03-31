@@ -7,14 +7,12 @@ const cors = require('cors');
 
 const { v4: uuidv4 } = require('uuid');
 
-
 const app = express();
 const port = 3000;
 const db = require('./DATABASE/database'); 
 const path = require('path');
 const config = require("./CONFIG/auth.config");
-
-
+const cookieParser = require('cookie-parser');
 const {verifyToken} = require('./MIDDLEWARE/authjwt.js');
 
   var jwt = require("jsonwebtoken");

@@ -25,10 +25,12 @@ class Category {
 }
 const drinkDisplay = document.getElementById('drink-display');
 const sigDrinks = new Category('sig-drinks-btn');
-const coffee = new Category('coffee-btn');
-const tea = new Category('tea-btn');
-const iceBlended = new Category('ice-blended-btn');
-const drinks = [sigDrinks, coffee, tea, iceBlended];
+const eggspresso = new Category('eggspresso-btn');
+const cocoFreeze = new Category('coco-freeze-btn');
+const peach = new Category('peach-btn');
+const lotus = new Category('lotus-btn');
+const drinks = [sigDrinks, eggspresso, cocoFreeze, peach, lotus];
+//const drinks = [sigDrinks, coffee, tea, iceBlended];
 let lastType;
 // let lastClicked;
 let allCards;
@@ -194,18 +196,22 @@ function selectButton(selectedButton) {
             // sigDrinks.isSelected = true;
             refreshDisplaySection('s');
             break;
-        case document.getElementById('coffee-btn'):
+        case document.getElementById('eggspresso-btn'):
             // coffee.isSelected = true;
+            refreshDisplaySection('e');
+            break;
+        case document.getElementById('coco-freeze-btn'):
+            // tea.isSelected = true;
             refreshDisplaySection('c');
             break;
-        case document.getElementById('tea-btn'):
-            // tea.isSelected = true;
-            refreshDisplaySection('t');
-            break;
-        case document.getElementById('ice-blended-btn'):
+        case document.getElementById('peach-btn'):
             // iceBlended.isSelected = true;
-            refreshDisplaySection('i');
+            refreshDisplaySection('p');
             break;
+        case document.getElementById('lotus-btn'):
+             //iceBlended.isSelected = true;
+            refreshDisplaySection('l');
+            break;    
     }
     // checkSelected();
     // refreshDisplaySection();

@@ -39,6 +39,7 @@ document.querySelector("#createAcc").addEventListener("click", function(){
     document.querySelector(".create-popup").classList.add("active");
     
     });
+
 const emailInput = document.querySelector('#email');
 
 const passwordInput = document.querySelector('#password');
@@ -57,17 +58,11 @@ async function handleSignIn() {
     };
 
     try {
-        // Login and obtain the token
+
         const response = await axios.post('/login', userData);
         console.log('Login successful:', response);
-
-        // Assuming the token is returned in response.data.accessToken
         const { accessToken } = response.data;
-
-        // Store the token in localStorage or sessionStorage
         localStorage.setItem('token', accessToken);
-
-        // Example of using the token to access a protected route
         const protectedResponse = await axios.get('/protected', {
             headers: {
                 'Authorization': `Bearer ${accessToken}`
@@ -75,9 +70,9 @@ async function handleSignIn() {
         });
 
         console.log('Protected route response:', protectedResponse.data);
-        // Handle access to protected route here, e.g., redirect or display data
+
     } catch (error) {
-        // Handle error (login failed or protected route access failed)
+      
         console.error('Error:', error);
     }
     
@@ -106,28 +101,21 @@ async function handleSignup(){
 }
 async function handleSignOut() {
     try {
-        // Retrieve the token from local storage
-        const token = localStorage.getItem('token'); // Or sessionStorage
-
-        // Send a request to the server to invalidate the token
+   
+        const token = localStorage.getItem('token'); 
         await axios.post('/logout', {}, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         });
 
-        // Remove the token from local storage to complete the logout on the client side
         localStorage.removeItem('token');
-    
-        // For sessionStorage
         sessionStorage.removeItem('token');
 
-        // Optionally, show a success message to the user
         alert('Logged out successfully');
     } catch (error) {
         console.error('Sign out failed:', error);
 
-        // Optionally, show an error message to the user
         alert('Logout failed. Please try again.');
     }
 }
@@ -190,7 +178,5 @@ document.getElementById('create-invalid-popup-email').addEventListener('click', 
     this.style.display = 'none';
 });
 // Add event listener to the Sign in button
-
 signInButton.addEventListener('click', handleSignIn);
 signOutButton.addEventListener('click', handleSignOut);
-

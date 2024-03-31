@@ -2,11 +2,20 @@
 //requires visuale studion rest extension to run
 POST http://localhost:3000/adminlogin
 Content-Type: application/json
+{
+    "email": "Demboys@gmail.com",
+    "password":"demboys!!"
+}
+
+###
+POST http://localhost:3000/createAcount
+Content-Type: application/json
 
 {
     "email": "Demboys@gmail.com",
     "password":"demboys!!"
 }
+
 ###
 POST http://localhost:3000/login
 Content-Type: application/json
@@ -18,5 +27,4 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/tokenTest
-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkRlbWJveXNAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTAwNTc5MjUsImV4cCI6MTcxMDA2MTUyNX0.iH6Zspt8ZvWTM8cXvza5a0TkzAXukoBIi7yH6NPWyeM; Path=/; HttpOnly; Secure; SameSite=Strict
-
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkRlbWJveXNAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTE2OTYzNTMsImV4cCI6MTcxMTY5OTk1M30.b8IrQDEx9xYGzn5ln8caTZ21mijsfOyAs79D_XqbxYk; Path=/; HttpOnly; Secure; SameSite=Strict

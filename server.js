@@ -10,22 +10,26 @@ const upload = multer({ dest: './PHOTOS/drinksPNGS' });
 const cors = require('cors');
 
 const { v4: uuidv4 } = require('uuid');
-const cookieParser = require('cookie-parser');
 
 const app = express();
 const port = 3000;
 const db = require('./DATABASE/database');
 const path = require('path');
 const config = require("./CONFIG/auth.config");
+const cookieParser = require('cookie-parser');
+const {verifyToken} = require('./MIDDLEWARE/authjwt.js');
 
+  var jwt = require("jsonwebtoken");
+// const cookieParser = require('cookie-parser');
+const authJwt = require('./MIDDLEWARE/authjwt.js');
 
-const { verifyToken } = require('./MIDDLEWARE/authjwt.js');
+const verifyNewAcount = require('./MIDDLEWARE/verifyNewAcount.js');
+
 app.use(express.static(path.join(__dirname, 'STYLES')))
 app.use(express.static(path.join(__dirname, 'PHOTOS')))
 app.use(express.static(path.join(__dirname, 'ICONS')))
 app.use(express.static(path.join(__dirname, 'COMPONENTS')))
 const session = require('express-session');
-const { type } = require('os');
 
 // Set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -35,7 +39,7 @@ app.use(cookieParser());
 
 
 
-var corsOptions = {
+var corsOptions ={
   origin: 'http://localhost:3001'
 };
 //enable middleware
@@ -43,7 +47,7 @@ app.use(cors(corsOptions));
 
 
 app.use(express.json());
-// app.use(cookieParser());
+app.use(cookieParser());
 //test
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
@@ -66,6 +70,15 @@ app.get('/login', (req, res) => {
 
   res.render('login.ejs');
 });
+app.get('/review', (req, res) => {
+  
+  res.render('review.ejs');
+});
+
+app.get('/userLogout', (req, res) => {
+  
+    res.render('userLogout.ejs');
+  });
 
 app.get('/get-latest', (req, res) => {
   const query = 'SELECT * FROM Drinks ORDER BY id DESC LIMIT 1';
@@ -151,57 +164,11 @@ app.put('/edit-drinks', upload.single('add-new-image'), (req, res) => {
 });
 
 // TODO: Temporary page, change
-app.get('/admin', (req, res) => {
+app.get('/admin',[authJwt.verifyToken,authJwt.verifyAdmin],(req, res) => {
   res.render('admin.ejs');
 });
-const secretKey = "yourSecretKey";
+const secretKey = config.access_secret;
 app.post('/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const userId = uuidv4();
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-
-    //const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?, ?, ?)";
-    db.getCon().query(insertUserSql, [userId, email, hashedPassword], (err, result) => {
-
-
-      const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?,?,?)";
-
-      //create a local access token for the user
-      try {
-        const user = { userId, email };
-        const accessToken = jwt.sign(user, config.access_secret,
-          { algorithm: 'HS256', expiresIn: '15m' });
-        const refreshToken = jwt.sign(user, config.refresh_secret,
-          { algorithm: 'HS256', expiresIn: '120m' });
-        res.cookie('refresh_token', refreshToken, { httpOnly: true });
-        res.json({ accessToken, refreshToken });
-      }
-      catch (error) {
-        res.status(401).json({ error: error.message })
-      }
-
-
-      db.getCon().query(insertUserSql, [userId, email, hashedPassword], (err, result) => {
-
-        if (err) {
-          console.error('Error inserting new user:', err);
-          //return res.status(500).send('Error during registration');
-        }
-
-        //res.send('User registered successfully');
-      });
-
-
-      //res.send('User registered successfully');
-    });
-
-
-  } catch (error) {
-    console.error('Error during registration:', error);
-    //res.status(500).send('Error during registration');
-  }
   try {
     const { email, password } = req.body;
     const findUserSql = "SELECT * FROM UserLogin WHERE email = ?";
@@ -217,10 +184,11 @@ app.post('/login', async (req, res) => {
       }
 
       const user = users[0];
+  
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (isMatch) {
-        const accessToken = jwt.sign({ email: user.email }, secretKey, { expiresIn: '1h' });
+        const accessToken = jwt.sign({  email: user.email ,role: user.role}, secretKey, { expiresIn: '1h' });
         res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
         console.log("Match");
         return res.json({ accessToken }); // Use return here
@@ -231,6 +199,33 @@ app.post('/login', async (req, res) => {
   } catch (error) {
     console.error('Error during login:', error);
     return res.status(500).send('Error during login'); // Use return here
+  }
+});
+
+app.post('/createAcount',verifyNewAcount.checkDuplicateEmail, async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const userId = uuidv4();
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const role = "user"
+
+    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password,role) VALUES (?,?,?,?)";
+
+   
+    
+  
+    db.getCon().query(insertUserSql, [userId , email, hashedPassword,role], (err, result) => {
+
+      if (err) {
+        console.error('Error inserting new user:', err);
+        return res.status(500).send('Error during registration');
+      }
+
+      //res.send('User registered successfully');
+    });
+  } catch (error) {
+    console.error('Error during registration:', error);
+    //res.status(500).send('Error during registration');
   }
 });
 
@@ -251,7 +246,7 @@ app.post('/logout', (req, res) => {
       console.error("Error destroying session: ", err);
       return res.status(500).json({ message: 'Logout failed' });
     }
-
+    
     // Clear any authentication-related cookies
     res.clearCookie('connect.sid', { path: '/' }); // Adjust based on your session cookie's name
     res.clearCookie('token', { path: '/' }); // If you are using a 'token' cookie
@@ -270,7 +265,7 @@ app.get('/protected', authenticateToken, (req, res) => {
   res.send("welcome!!!")
 });
 
-app.get('/adminlogin', (req, res) => { //temporary page for admin login
+app.get('/adminlogin', (req,res) =>{ //temporary page for admin login
 
   res.render('adminLogin.ejs')
 });
@@ -281,19 +276,24 @@ app.post('/adminLogin', async (req, res) => {
     const userId = uuidv4();
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    const role ="admin"
 
+    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password,role) VALUES (?,?,?,?)";
 
-    const insertUserSql = "INSERT INTO UserLogin (uuid, email, password) VALUES (?,?,?)";
-
-
-    db.getCon().query(insertUserSql, [userId, email, hashedPassword], (err, result) => {
+  
+    db.getCon().query(insertUserSql, [userId , email, hashedPassword,role], (err, result) => {
       if (err) {
         console.error('Error inserting new user:', err);
         res.status(500).send('Error during registration');
         return;
       }
 
-      res.send('User registered successfully');
+      const accessToken = jwt.sign({  email: email ,role: role}, secretKey, { expiresIn: '1h' });
+      res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+      console.log("Match");
+      res.json( accessToken ); // Use return here
+
+      //res.send('User registered successfully');
     });
 
   } catch (error) {
@@ -352,7 +352,20 @@ app.get('/drinks/list', (req, res) => {
     res.json(result);
   });
 });
-
+app.post('/submit-review', async (req, res) => {
+  const reviewText = req.body.reviewText;
+  const insertSql = 'INSERT INTO Reviews (review_text) VALUES (?)';
+  
+  db.getCon().query(insertSql, [reviewText], function(err, result) {
+      if (err) {
+          console.error('Error inserting review:', err);
+          res.status(500).send('Error inserting review');
+          return;
+      }
+      console.log('Review inserted successfully:', result.insertId);
+      res.send('Review submitted successfully');
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
@@ -376,9 +389,13 @@ db.connectToDatabase(function (err) {
 
 //test authorization
 //,function(req,res){verifyToken}
-app.post('/tokenTest', (req, res) => {
+app.post('/tokenTest',(req, res) => {
   res.json("testing authentiification")
 })
-app.get('/tokenTest', verifyToken, verifyToken, (req, res) => {
+/*app.get('/tokenTest',verifyToken,verifyToken,(req, res) => {
+  res.json("authoriztion worked")
+})*/
+
+app.get('/tokenTest',[authJwt.verifyToken,authJwt.verifyAdmin],(req, res) => {
   res.json("authoriztion worked")
 })

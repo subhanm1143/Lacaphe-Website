@@ -1,16 +1,14 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
 }
-
-.header{
-    background-image: url('LACAPHEPIC3.jpg'); /* Placeholder */
-    background-size:cover;
-    background-position-y: -600px;
-    background-repeat: no-repeat;
-    height: 50vh; /*changed from 500 px because this makes it more responsive to different screen sizes*/
+.header {
+    background-image: url('LACAPHEPIC3.JPG');
+    background-size: cover;
+    background-position: left; 
+    height: 80vh; 
 }
 .top {
     display: flex;
@@ -19,7 +17,6 @@ body {
     height: 400px;
     padding-top: 3%; /* I changed this to 3% cause I think 7% makes it too bulky up top*/
 }
-
 .nav-bar {
     list-style-type: none;
     display: flex;
@@ -37,6 +34,7 @@ body {
     margin-top: -7px; 
 }
 
+
 .nav-bar-link {
     text-decoration: none;
     color: white;
@@ -51,9 +49,10 @@ body {
 .nav-bar-link:hover p {
     transform: scale(0.9);
 }
+
 .inside_header {
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -149,6 +148,7 @@ footer {
 .footer-right {
     display: flex; 
     align-items: center;
+    padding-top: 5px;
     padding-right: 20px;
 }
 .footer-right img {

@@ -35,8 +35,14 @@ function setupDatabase(err) {
     if (err) throw err;
     console.log("User table dropped if it exits");
   })
+  var dropReviews = "DROP TABLE IF EXISTS Reviews"
+  con.query(dropReviews, function (err) {
+    if (err) throw err;
+    console.log("User table dropped if it exits");
+  })
   createDrinkTable();
   createUserLoginTable();
+  createReviewTable();
 }
 function createDrinkTable(){
   // 's' = signature drinks, 'c' = coffee, 't' = tea, 'i' = ice blended
@@ -47,6 +53,15 @@ function createDrinkTable(){
   })
   populateDrinktable();
 }
+function createReviewTable(){
+
+  var tablesql = "CREATE TABLE Reviews(id INT AUTO_INCREMENT PRIMARY KEY, review_text TEXT)";
+  con.query(tablesql, function (err) {
+    if (err) throw err;
+    console.log("Review table created");
+  })
+ // populateReviewTable(); // You should define this function to populate the Reviews table with initial data
+}
 function createUserLoginTable(){
 
 
@@ -54,7 +69,8 @@ function createUserLoginTable(){
   CREATE TABLE UserLogin (
     uuid VARCHAR(36) PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(255)
   )`;
   con.query(userLoginTable, function (err) {
     if (err) throw err;
@@ -62,13 +78,22 @@ function createUserLoginTable(){
   })
 
 }
+
 function populateDrinktable(){
-  // The image path is a URL, not a computer path
-  var insertsql = "INSERT INTO Drinks(name, image,price,type, description) VALUES('boba tea','/drinksPNGS/test1.jpg',2.50,'t', 'desc 1'),"
-    + "('lychee Tea','/drinksPNGS/test2.jpg',3.75, 't', 'desc 2'),"
-    + "('Test Coffee','/drinksPNGS/test3.webp',5.00, 'c', 'desc 3'),"
-    + "('Some Signature Drink', '/drinksPNGS/test4.jpg', 5.00, 's', 'desc 4'),"
-    + "('Ice Blended Drink', '/drinksPNGS/test5.jpg', 2.75, 'i', 'desc 5');"
+
+  // Format has to be /drinksPNGS/[image name here]
+  var insertsql = "INSERT INTO Drinks(name, image, price, type, description) VALUES('boba tea','/drinksPNGS/test1.jpg',2.50,'t', 'desc 1'),"
+    + "('Eggspresso Hanoi','/drinksPNGS/newtest2.webp',6.95, 's', 'phin-dripped milk coffee with sweet egg cream'),"
+    + "('Coco Freeze','/drinksPNGS/newtest3.webp',6.50, 's', 'coconut coffee blended with toasted coconut flakes'),"
+    + "('Signature Saigon', '/drinksPNGS/newtest4.webp', 6.75, 's', 'our house blend coffee with cloud cream'),"
+    + "('Peach', '/drinksPNGS/newtest5.webp', 6.75, 's', 'black tea infused with peach, orange, lemongrass'),"
+    + "('Lotus', '/drinksPNGS/newtest6.webp', 6.50, 's', 'creamy lotus milk tea with crystal boba');"
+    
+  // var insertsql = "INSERT INTO Drinks(name, image,price,type, description) VALUES('boba tea','/drinksPNGS/test1.jpg',2.50,'t', 'desc 1'),"
+  //   + "('lychee Tea','/drinksPNGS/test2.jpg',3.75, 't', 'desc 2'),"
+  //   + "('Test Coffee','/drinksPNGS/test3.webp',5.00, 'c', 'desc 3'),"
+  //   + "('Some Signature Drink', '/drinksPNGS/test4.jpg', 5.00, 's', 'desc 4'),"
+  //   + "('Ice Blended Drink', '/drinksPNGS/test5.jpg', 2.75, 'i', 'desc 5');"
   con.query(insertsql, function (err) {
     if (err) throw err;
     console.log("Test table filled");

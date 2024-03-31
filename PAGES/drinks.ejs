@@ -74,25 +74,32 @@
                     </li>
                     <!--using a logo to connect like showen in Figma mockup -->
                 </ul>
-            </div>
-            <div class="inside_header">
-                <h1>DRINKS</h1>
+                <%- include('login.ejs') %> 
+                <div class="inside_header">
+                    <h1>DRINKS</h1>
+                </div>
             </div>
         </div>
     
+    <!-- This section will pull the ejs from login.ejs -->
+    <%- include('login.ejs') %>  
+
     <div class="drinks-section">
         <div id="drink-categories">
             <button class="category" id="sig-drinks-btn">
-                <h2>Signature Drinks</h2>
+                <h2>SIGNATURE SAIGON</h2>
             </button>
-            <button class="category" id="coffee-btn">
-                <h2>Coffee</h2>
+            <button class="category" id="eggspresso-btn">
+                <h2>EGGSPRESSO HANOI</h2>
             </button>
-            <button class="category" id="tea-btn">
-                <h2>Tea</h2>
+            <button class="category" id="coco-freeze-btn">
+                <h2>COCO FREEZE</h2>
             </button>
-            <button class="category" id="ice-blended-btn">
-                <h2>Ice Blended</h2>
+            <button class="category" id="peach-btn">
+                <h2>PEACH</h2>
+            </button>
+            <button class="category" id="lotus-btn">
+                <h2>LOTUS</h2>
             </button>
         </div>
         <div id="drink-display">
@@ -106,7 +113,9 @@
             -->
         </div>
     </div>
-
+    <div id="menu" class="menu">
+        <!--Coming from JavaScript-->
+    </div>
     <footer>
         <div class="container">
             <p>740 Story Rd #5, San Jose, CA 95122<br>+1(408) 564-6237<br></p>
@@ -145,5 +154,6 @@
         </p>
     </footer>
     <script src="/drinksJS.js"></script>
+    <script src="login.ejs" defer></script>
 </body>
 </html>

@@ -2,11 +2,20 @@
 //document.querySelector("#show-login").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
 //const verifyNewAcount = require("./MIDDLEWARE/verifyNewAcount");
 
+function activatePopup(event) {
+    event.preventDefault(); // Prevent the default action of following the link
+    document.querySelector(".popup").classList.add("active");
+}
+
+document.querySelector("a.nav-bar-link[href='/login']").addEventListener("click", activatePopup);
+document.querySelector("p.footer-nav-bar a[href='/login']").addEventListener("click", activatePopup);
+
+/*
 document.querySelector("a.nav-bar-link[href='/login']").addEventListener("click", function(event){
     event.preventDefault(); // Prevent the default action of following the link
     document.querySelector(".popup").classList.add("active");
 });
-
+*/
 
 //closes pop ups
 document.querySelector(".popup .close-btn").addEventListener("click", function(){
@@ -46,6 +55,10 @@ const passwordInput = document.querySelector('#password');
 
 const signInButton = document.querySelector('#signin-btn');
 const signOutButton = document.querySelector('#signout-btn');
+
+//signout 
+//document.querySelector("#signout-btn").addEventListener("click", function(){document.querySelector(".signout-popup").classList.add("active");});
+//document.querySelector(".signout-popup .close-btn").addEventListener("click", function(){document.querySelector(".signout-popup").classList.remove("active");});
 
 async function handleSignIn() {
     // Get the values from the email and password fields

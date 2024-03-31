@@ -7,7 +7,7 @@ function connectToDatabase() {
   con = mysql.createConnection({
 
     host: "localhost",
-    user: "root",
+    user: "liberio",
     password: "DemBoys"
   });
   con.connect(err => {
@@ -63,11 +63,12 @@ function createUserLoginTable(){
 
 }
 function populateDrinktable(){
-  var insertsql = "INSERT INTO Drinks(name, image,price,type, description) VALUES('boba tea','https://www.unionsquareawards.org/wp-content/uploads/2019/09/images3904-5d882e0c1594c.jpg',2.50,'t', 'desc 1'),"
-    + "('lychee Tea','https://s3-media0.fl.yelpcdn.com/bphoto/Z0nZF9zYTaMVT5nbbGuxDA/o.jpg',3.75, 't', 'desc 2'),"
-    + "('Test Coffee','https://images.immediate.co.uk/production/volatile/sites/30/2020/08/flat-white-3402c4f.jpg?quality=90&webp=true&resize=500,454',5.00, 'c', 'desc 3'),"
-    + "('Some Signature Drink', 'http://1.bp.blogspot.com/-JFw1MGN5OoM/UD-BpCdlxzI/AAAAAAAAEMQ/brNZEjdhZWU/s1600/Lychee%2BMartini%2B3fc.jpg', 5.00, 's', 'desc 4'),"
-    + "('Ice Blended Drink', 'https://www.gfbfood.com.my/wp-content/uploads/2020/03/Untitled-design-1.jpg', 2.75, 'i', 'desc 5');"
+  // The image path is a URL, not a computer path
+  var insertsql = "INSERT INTO Drinks(name, image,price,type, description) VALUES('boba tea','/drinksPNGS/test1.jpg',2.50,'t', 'desc 1'),"
+    + "('lychee Tea','/drinksPNGS/test2.jpg',3.75, 't', 'desc 2'),"
+    + "('Test Coffee','/drinksPNGS/test3.webp',5.00, 'c', 'desc 3'),"
+    + "('Some Signature Drink', '/drinksPNGS/test4.jpg', 5.00, 's', 'desc 4'),"
+    + "('Ice Blended Drink', '/drinksPNGS/test5.jpg', 2.75, 'i', 'desc 5');"
   con.query(insertsql, function (err) {
     if (err) throw err;
     console.log("Test table filled");

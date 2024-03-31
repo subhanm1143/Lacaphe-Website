@@ -23,6 +23,11 @@
                     </a>
                 </li>
                 <li>
+                    <a class="nav-bar-link" href="/">
+                        <p>HOME</p>
+                    </a>
+                </li>
+                <li>
                     <a class="nav-bar-link" href="/about">
                         <p>ABOUT</p>
                     </a>
@@ -61,8 +66,16 @@
     <!-- This section will pull the ejs from login.ejs -->
     <%- include('login.ejs') %>
 
+    <!-- This section will pull the ejs from login.ejs -->
+    <%- include('login.ejs') %>
+
     <!-- This is the div with the quote section that also leads to the "Get to Know us" or "About" page. -->
     <div class="quote-section">
+        <p>Ở đây có trà, cà phê, và cả niềm vui</p>
+        <p class="translation">"There is tea, coffee, and fun"</p>
+        <a href="/about">
+            <button>Get To Know Us</button>
+        </a>
         <p>Ở đây có trà, cà phê, và cả niềm vui</p>
         <p class="translation">"There is tea, coffee, and fun"</p>
         <a href="/about">
@@ -79,6 +92,12 @@
             <img class="photo" src="/collage4.jpg" alt="">
             <img class="photo" src="/collage5.jpg" alt="">
             <img class="photo" src="/collage6.jpg" alt="">
+            <img class="photo" src="/collage1.jpg" alt="">
+            <img class="photo" src="/collage2.jpg" alt="">
+            <img class="photo" src="/collage3.jpg" alt="">
+            <img class="photo" src="/collage4.jpg" alt="">
+            <img class="photo" src="/collage5.jpg" alt="">
+            <img class="photo" src="/collage6.jpg" alt="">
         </div>
     </div>
 
@@ -88,12 +107,15 @@
         <div class="featured-row">
 
             <!-- Fill in the href to navigate to the respective drink -->
+            <!-- Fill in the href to navigate to the respective drink -->
             <div class="featured-column">
                 <a href="">
                     <div class="card">
                         <img src="/DSCF7834.jpg" alt="" class="card-img">
+                        <img src="/DSCF7834.jpg" alt="" class="card-img">
                         <div class="card-text">
                             <h2>Drink name</h2>
+                            <!-- <p>Brief product description</p> -->
                             <!-- <p>Brief product description</p> -->
                         </div>
                     </div>
@@ -104,6 +126,7 @@
                 <a href="">
                     <div class="card">
                         <img src="/DSCF8265.jpg" alt="" class="card-img">
+                        <img src="/DSCF8265.jpg" alt="" class="card-img">
                         <div class="card-text">
                             <h2>Drink name</h2>
                         </div>
@@ -114,6 +137,17 @@
             <div class="featured-column">
                 <a href="">
                     <div class="card">
+                        <img src="/DSCF8269.jpg" alt="" class="card-img">
+                        <div class="card-text">
+                            <h2>Drink name</h2>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="featured-column">
+                <a href="">
+                    <div class="card">
+                        <img src="/DSCF7834.jpg" alt="" class="card-img">
                         <img src="/DSCF8269.jpg" alt="" class="card-img">
                         <div class="card-text">
                             <h2>Drink name</h2>
@@ -147,6 +181,7 @@
                 <a href="">
                     <div class="card">
                         <img src="/DSCF8269.jpg" alt="" class="card-img">
+                        <img src="/DSCF8269.jpg" alt="" class="card-img">
                         <div class="card-text">
                             <h2>Drink name</h2>
                         </div>
@@ -156,33 +191,42 @@
 
             
 
+            
+
         </div>
     </div>
 
     <!-- QR Code div & Order button -->
     <div class="order-online-section">
-        <div class="oos-title-div">
-            <p class="oos-title">IN-STORE PICKUP!</p>
-            <p class="oos-title">ORDER AHEAD AND</p>
-            <p class="oos-title">SKIP THE LINE!</p>
-            <a href="https://lacaphe.square.site/#2">
-                <button class="oos-btn">ORDER HERE</button>
-            </a>
-
-            <div class="phone-adjust"> 
-                <img class="phone-image" src="/phoneOrderPic.png" alt="">    
-            </div>
-            <div class="qr-code">
-                <img class="qr-image" src="/TEMPBARCODE.jpg" alt="">
-            </div>
-        </div> 
-        <!-- <div class="qr-code">QR Code goes here</div> -->
+        <div class="text-block">
+            <h2>IN-STORE PICKUP!</h2>
+            <h2>ORDER AHEAD,</h2>
+            <h2>SKIP THE LINE!</h2>
+            <a href="https://lacaphe.square.site/#2" class="order-button">ORDER HERE</a>
+        </div>
+        <div class="phone-image">
+            <img src="/phoneOrderPic.png" alt="Order on Phone">    
+        </div>
+        <div class="qr-code">
+            <img src="/TEMPBARCODE.jpg" alt="Scan QR Code">
+            <p>scan me!</p>
+        </div>
     </div>
+    
+
 
     <script defer src="script.js"></script>
 
             <!-- <p class="oos-title">IN-STORE PICKUP! ORDER AHEAD AND SKIP THE LINE!</p>
             <button class="oos-btn"><a href="https://lacaphe.square.site/">ORDER HERE</a></button>
+        </div> -->
+        <!-- <div class="phone-adjust"> 
+            <img class="phone-image" src="/phoneOrderPic.png" alt="">    
+        </div>
+        <div class="qr-code">
+            <img class="qr-image" src="/TEMPBARCODE.jpg" alt="">
+        </div>
+    </div> -->
         </div> -->
         <!-- <div class="phone-adjust"> 
             <img class="phone-image" src="/phoneOrderPic.png" alt="">    
@@ -228,9 +272,18 @@
             <a href="https://lacaphe.carrd.co/">Connect</a> | 
             <a href="/login">Login</a>
         </p>
+        <p class="footer-nav-bar">
+            <a href="/">Home</a> | 
+            <a href="/about">About</a> | 
+            <a href="https://lacaphe.square.site/">Order</a> | 
+            <a href="/drinks">Drinks</a> | 
+            <a href="https://lacaphe.carrd.co/">Connect</a> | 
+            <a href="/login">Login</a>
+        </p>
     </footer>
 
     <script defer src="script.js"></script>
+    <script src="login.ejs" defer></script>
     <script src="login.ejs" defer></script>
 </body>
 

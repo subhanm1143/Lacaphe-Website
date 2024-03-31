@@ -191,5 +191,6 @@ document.getElementById('create-invalid-popup-email').addEventListener('click', 
     this.style.display = 'none';
 });
 // Add event listener to the Sign in button
+
 signInButton.addEventListener('click', handleSignIn);
 signOutButton.addEventListener('click', handleSignOut);

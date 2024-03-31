@@ -7,8 +7,8 @@ function connectToDatabase() {
   con = mysql.createConnection({
 
     host: "localhost",
-    user: "root",
-    password: "DemBoys!!!!"
+    user: "liberio",
+    password: "DemBoys"
   });
   con.connect(err => {
     setupDatabase(err);
@@ -80,13 +80,20 @@ function createUserLoginTable(){
 }
 
 function populateDrinktable(){
-  var insertsql = "INSERT INTO Drinks(name, image, price, type, description) VALUES('boba tea','https://www.unionsquareawards.org/wp-content/uploads/2019/09/images3904-5d882e0c1594c.jpg',2.50,'t', 'desc 1'),"
-    + "('Eggspresso Hanoi','https://146372128.cdn6.editmysite.com/uploads/1/4/6/3/146372128/s387883941657224239_p1_i1_w4160.png?width=1280&dpr=1',6.95, 'e', 'phin-dripped milk coffee with sweet egg cream'),"
-    + "('Coco Freeze','https://146372128.cdn6.editmysite.com/uploads/1/4/6/3/146372128/s387883941657224239_p3_i1_w4160.png?width=1280&dpr=1',6.50, 'c', 'coconut coffee blended with toasted coconut flakes'),"
-    + "('Signature Saigon', 'https://146372128.cdn6.editmysite.com/uploads/1/4/6/3/146372128/s387883941657224239_p19_i1_w4160.png?width=1280&dpr=1', 6.75, 's', 'our house blend coffee with cloud cream'),"
-    + "('Peach', 'https://146372128.cdn6.editmysite.com/uploads/1/4/6/3/146372128/s387883941657224239_p5_i1_w4160.png?width=1280&dpr=1', 6.75, 'p', 'black tea infused with peach, orange, lemongrass'),"
-    + "('Lotus', 'https://146372128.cdn6.editmysite.com/uploads/1/4/6/3/146372128/s387883941657224239_p10_i1_w4160.png?width=1280&dpr=1', 6.50, 'l', 'creamy lotus milk tea with crystal boba');"
+
+  // Format has to be /drinksPNGS/[image name here]
+  var insertsql = "INSERT INTO Drinks(name, image, price, type, description) VALUES('boba tea','/drinksPNGS/test1.jpg',2.50,'t', 'desc 1'),"
+    + "('Eggspresso Hanoi','/drinksPNGS/newtest2.webp',6.95, 's', 'phin-dripped milk coffee with sweet egg cream'),"
+    + "('Coco Freeze','/drinksPNGS/newtest3.webp',6.50, 's', 'coconut coffee blended with toasted coconut flakes'),"
+    + "('Signature Saigon', '/drinksPNGS/newtest4.webp', 6.75, 's', 'our house blend coffee with cloud cream'),"
+    + "('Peach', '/drinksPNGS/newtest5.webp', 6.75, 's', 'black tea infused with peach, orange, lemongrass'),"
+    + "('Lotus', '/drinksPNGS/newtest6.webp', 6.50, 's', 'creamy lotus milk tea with crystal boba');"
     
+  // var insertsql = "INSERT INTO Drinks(name, image,price,type, description) VALUES('boba tea','/drinksPNGS/test1.jpg',2.50,'t', 'desc 1'),"
+  //   + "('lychee Tea','/drinksPNGS/test2.jpg',3.75, 't', 'desc 2'),"
+  //   + "('Test Coffee','/drinksPNGS/test3.webp',5.00, 'c', 'desc 3'),"
+  //   + "('Some Signature Drink', '/drinksPNGS/test4.jpg', 5.00, 's', 'desc 4'),"
+  //   + "('Ice Blended Drink', '/drinksPNGS/test5.jpg', 2.75, 'i', 'desc 5');"
   con.query(insertsql, function (err) {
     if (err) throw err;
     console.log("Test table filled");

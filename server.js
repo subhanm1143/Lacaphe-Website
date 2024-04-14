@@ -104,12 +104,13 @@ app.post('/add-drink', upload.single('add-new-item-image'), (req, res) => {
   const description = req.body['add-new-item-description'];
   const price = req.body['add-new-item-price'];
   const drinkType = req.body['add-new-item-type'];
+  const url = req.body['add-new-item-url'];
   const SUCCESS_MSG = "Added menu item successfully";
   let image = null;
   if (req.file) {
     image = '/drinksPNGS/' + req.file.filename;
-    const query = 'INSERT INTO Drinks (name, description, price, type, image) VALUES (?, ?, ?, ?, ?)';
-    db.getCon().query(query, [name, description, price, drinkType, image], (error, result) => {
+    const query = 'INSERT INTO Drinks (name, description, price, type, image, url) VALUES (?, ?, ?, ?, ?, ?)';
+    db.getCon().query(query, [name, description, price, drinkType, image, url], (error, result) => {
       if (error) throw error;
       res.send(SUCCESS_MSG);
     });
@@ -130,7 +131,7 @@ app.put('/edit-drinks', upload.single('add-new-image'), (req, res) => {
   // console.log(req.body);
   // let newImgPath, query;
   const SUCCESS_MSG = "Item updated successfully";
-  const { id, name, price, description } = req.body;
+  const { id, name, price, description, url } = req.body;
 
   function isValidPrice(price) {
     return /^\d+(\.\d{1,2})?$/.test(price);
@@ -151,9 +152,9 @@ app.put('/edit-drinks', upload.single('add-new-image'), (req, res) => {
     });
   }
 
-  const query = 'UPDATE Drinks SET name = ?, price = ?, description = ?, type = ? WHERE id = ?';
+  const query = 'UPDATE Drinks SET name = ?, price = ?, description = ?, type = ?, url = ? WHERE id = ?';
 
-  db.getCon().query(query, [name, price, description, req.body.type, id], (error, result) => {
+  db.getCon().query(query, [name, price, description, req.body.type, url, id], (error, result) => {
     if (error) throw error;
     // console.log("Item updated successfully");
     res.send(SUCCESS_MSG);
@@ -267,7 +268,7 @@ app.get('/protected', authenticateToken, (req, res) => {
 
 app.get('/adminlogin', (req,res) =>{ //temporary page for admin login
 
-  res.render('adminLogin.ejs')
+  res.render('adminLogIn.ejs')
 });
 
 app.post('/adminLogin', async (req, res) => {

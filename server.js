@@ -115,9 +115,9 @@ app.post('/add-drink', upload.single('add-new-item-image'), (req, res) => {
       res.send(SUCCESS_MSG);
     });
   } else {
-    const query = 'INSERT INTO Drinks (name, description, price, type) VALUES (?, ?, ?, ?)'
+    const query = 'INSERT INTO Drinks (name, description, price, type, url) VALUES (?, ?, ?, ?, ?)'
 
-    db.getCon().query(query, [name, description, price, drinkType], (error, result) => {
+    db.getCon().query(query, [name, description, price, drinkType, url], (error, result) => {
       if (error) throw error;
       res.send(SUCCESS_MSG);
     });

@@ -72,12 +72,15 @@ body {
     justify-content: space-between;
 
     align-items: center;
-    background-color: chocolate;
+    background: linear-gradient(to bottom, #B4ADA1, #919388);
    /* padding: 20px;
 
     /*  margin: 20px;
     padding: 20px;
    /* background-color: white;*/
+}
+.content_section_bottom{
+    background: linear-gradient(to bottom, #919388, #B4ADA1);
 }
 .content-section div,
 .content-section img {
@@ -100,7 +103,7 @@ body {
     justify-content: space-between;
 
     align-items: center;
-    background-color: sandybrown;
+    background: linear-gradient(to bottom, #B4ADA1, #919388);
  
 }
 .owners-section div,
@@ -120,6 +123,9 @@ body {
 
 .owners-section img {
     padding: 0; /* This ensures that images have no padding */
+}
+.hideme {
+    opacity: .01;
 }
 .gallery {
     display: flex;
@@ -209,6 +215,4 @@ footer {
     .content-section, .owners-section {
         flex-direction: column;
     }
-}
-
 }

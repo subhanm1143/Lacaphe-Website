@@ -1,7 +1,77 @@
 //brings up login screen
 //document.querySelector("#show-login").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
 //const verifyNewAcount = require("./MIDDLEWARE/verifyNewAcount");
+document.addEventListener('DOMContentLoaded', (event) => {
+    const loginBtn = document.getElementById('signin-btn');
+    const signOutButton = document.getElementById('signout-btn');
+    const loginModal = document.getElementById('loginModal');
+    const reviewForm = document.getElementById('reviewForm');
+    const mainPopup = document.querySelector(".popup");
+    const createAccountPopup = document.querySelector(".create-popup");
 
+    reviewForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const reviewText = document.getElementById('reviewText').value;
+        axios.post('/submit-review', { reviewText: reviewText })
+            .then(function (response) {
+                console.log('Success:', response.data);
+                document.getElementById('reviewText').value = ''; // Clear the form
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+            });
+    });
+
+    // Hide sign out button and login modal initially
+    signOutButton.style.display = 'none';
+    loginModal.style.display = 'none';
+
+    loginBtn.addEventListener('click', async function (e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        try {
+            const response = await axios.post('/login', { email, password });
+            console.log('Login successful:', response.data);
+            // Close other pop-ups
+            mainPopup.classList.remove("active");
+            createAccountPopup.classList.remove("active");
+            // Show login modal on successful login
+            loginModal.style.display = 'block';
+            // Update UI to reflect logged in state
+            signOutButton.style.display = 'block';
+            loginBtn.style.display = 'none';
+        } catch (error) {
+            console.error('Login failed:', error);
+            document.getElementById('invalid-popup-login').style.display = 'block';
+        }
+    });
+
+    signOutButton.addEventListener('click', function () {
+        axios.post('/logout')
+            .then(function (response) {
+                console.log('Logged out successfully');
+                signOutButton.style.display = 'none';
+                loginBtn.style.display = 'block';
+                loginModal.style.display = 'none'; // Hide the login modal
+            })
+            .catch(function (error) {
+                console.error('Logout failed:', error);
+            });
+    });
+
+    // Close the login modal
+    document.querySelector('.modal .close-button').addEventListener('click', function () {
+        loginModal.style.display = 'none';
+    });
+
+    // Event listeners for closing pop-ups using their close buttons
+    document.querySelectorAll(".close-btn").forEach(button => {
+        button.addEventListener("click", function(){
+            this.closest(".popup, .create-popup").classList.remove("active");
+        });
+    });
+});
 async function activatePopup(event) {
     event.preventDefault(); // Prevent the default action of following the link
     document.querySelector(".popup").classList.add("active");
@@ -84,7 +154,7 @@ async function handleSignIn() {
     // Get the values from the email and password fields
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    console.log('Email:', email, 'Password:', password);
+   // window.location.href = "/review";
     const userData = {
         email: email,
         password: password
@@ -94,6 +164,7 @@ async function handleSignIn() {
 
         const response = await axios.post('/login', userData);
         console.log('Login successful:', response);
+        showModal('Login successful! Welcome!');
         const { accessToken } = response.data;
         localStorage.setItem('token', accessToken);
         const protectedResponse = await axios.get('/protected', {
@@ -103,7 +174,7 @@ async function handleSignIn() {
         });
 
 
-        console.log('Protected route response:', protectedResponse.data);
+   
         //close popup when properly loged in
         document.querySelector(".popup").classList.remove("active");
         //clear fields when logged in
@@ -116,7 +187,21 @@ async function handleSignIn() {
     }
     
 }
+function showModal(message) {
+    const modal = document.getElementById('loginModal');
+    modal.style.display = "block";
+    modal.querySelector('p').textContent = message;
 
+    const closeButton = modal.querySelector('.close-button');
+    closeButton.onclick = function() {
+        modal.style.display = "none";
+    };
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+}
 async function handleSignup(){
     // Get the values from the email and password fields
     const email = document.getElementById('email-create').value;
@@ -177,10 +262,6 @@ document.querySelector("#post-createAcc").addEventListener("click", function(eve
     const email = document.getElementById('email-create').value;
     const password = document.getElementById('create-password').value;
     const password2 = document.getElementById('confirm-password').value;
-
-    console.log("The email is " + email);
-    console.log("The password is " + password);
-    console.log("The password2 is " + password2);
     
     if (!email.includes('@') || !email.endsWith('.com')) {
         // Show the invalid create account popup message

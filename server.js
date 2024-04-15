@@ -70,7 +70,7 @@ app.get('/login', (req, res) => {
 
   res.render('login.ejs');
 });
-app.get('/review', (req, res) => {
+app.get('/review', authJwt.verifyUser, (req, res) => {
   
   res.render('review.ejs');
 });

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     // Hide sign out button and login modal initially
-    signOutButton.style.display = 'none';
+    //signOutButton.style.display = 'none';
     loginModal.style.display = 'none';
 
     loginBtn.addEventListener('click', async function (e) {
@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             // Show login modal on successful login
             loginModal.style.display = 'block';
             // Update UI to reflect logged in state
-            signOutButton.style.display = 'block';
-            loginBtn.style.display = 'none';
+            //signOutButton.style.display = 'block';
+            //loginBtn.style.display = 'none';
         } catch (error) {
             console.error('Login failed:', error);
             document.getElementById('invalid-popup-login').style.display = 'block';
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         axios.post('/logout')
             .then(function (response) {
                 console.log('Logged out successfully');
-                signOutButton.style.display = 'none';
+                //signOutButton.style.display = 'none';
                 loginBtn.style.display = 'block';
                 loginModal.style.display = 'none'; // Hide the login modal
             })

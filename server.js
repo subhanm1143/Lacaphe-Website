@@ -226,10 +226,10 @@ app.post('/createAcount',verifyNewAcount.checkDuplicateEmail, async (req, res) =
     });
 
     //add token for loging in 
-    const accessToken = jwt.sign({  email: email ,role: role}, secretKey, { expiresIn: '1h' });
-    res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+    //const accessToken = jwt.sign({  email: email ,role: role}, secretKey, { expiresIn: '1h' });
+    //res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
     console.log("Match");
-    return res.json({ accessToken }); // Use return here
+    return res.send('User registered successfully');
   } catch (error) {
     console.error('Error during registration:', error);
     //res.status(500).send('Error during registration');

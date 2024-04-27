@@ -1,7 +1,7 @@
 {
   "name": "lacaphe-website",
   "version": "1.0.0",
-  "description": "test commit -Hien -Subhan -Paul - Brian Example Commit",
+  "description": "test commit -Hien -Subhan -Paul - Brian",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -30,3 +30,4 @@
     "uuidv4": "^6.2.13"
   }
 }
+

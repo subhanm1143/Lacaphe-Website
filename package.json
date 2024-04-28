@@ -1,7 +1,7 @@
 {
   "name": "lacaphe-website",
   "version": "1.0.0",
-  "description": "test commit -Hien -Subhan -Paul - Brian",
+  "description": "test commit -Hien -Subhan -Paul - Brian Example Commit",
   "main": "script.js",
   "scripts": {
     "test": "jest",

@@ -9,6 +9,7 @@ function connectToDatabase() {
     host: "localhost",
     user: "liberio",
     password: "DemBoys"
+
   });
   con.connect(err => {
     setupDatabase(err);

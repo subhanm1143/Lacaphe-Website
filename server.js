@@ -70,7 +70,7 @@ app.get('/login', (req, res) => {
 
   res.render('login.ejs');
 });
-app.get('/review', (req, res) => {
+app.get('/review', authJwt.verifyUser, (req, res) => {
   
   res.render('review.ejs');
 });
@@ -135,7 +135,6 @@ app.post('/add-drink', upload.single('add-new-item-image'), (req, res) => {
     });
   }
 
-  console.log(name, description, price, drinkType, image, url);
 
 })
 
@@ -236,10 +235,18 @@ app.post('/createAcount',verifyNewAcount.checkDuplicateEmail, async (req, res) =
 
       //res.send('User registered successfully');
     });
+
+    //add token for loging in 
+    //const accessToken = jwt.sign({  email: email ,role: role}, secretKey, { expiresIn: '1h' });
+    //res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+    console.log("Match");
+    return res.send('User registered successfully');
   } catch (error) {
     console.error('Error during registration:', error);
     //res.status(500).send('Error during registration');
   }
+
+
 });
 
 function authenticateToken(req, res, next) {
@@ -403,15 +410,12 @@ db.connectToDatabase(function (err) {
 });
 
 //test authorization
-//,function(req,res){verifyToken}
-app.post('/tokenTest',(req, res) => {
+//now used to vreify a used in check wether or not to enable signout
+app.post('/tokenTest',[authJwt.verifyToken],(req, res) => {
   res.json("testing authentiification")
 })
-/*app.get('/tokenTest',verifyToken,verifyToken,(req, res) => {
-  res.json("authoriztion worked")
-})*/
 
-app.get('/tokenTest',[authJwt.verifyToken,authJwt.verifyAdmin],(req, res) => {
+app.get('/tokenTest',[authJwt.verifyToken],(req, res) => {
   res.json("authoriztion worked")
 })
 

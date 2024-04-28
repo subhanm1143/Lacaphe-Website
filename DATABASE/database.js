@@ -68,7 +68,7 @@ function createReviewTable(){
     if (err) throw err;
     console.log("Review table created");
   })
-  populateReviewTable(); // You should define this function to populate the Reviews table with initial data
+  // populateReviewTable(); // You should define this function to populate the Reviews table with initial data
 }
 function createUserLoginTable(){
 

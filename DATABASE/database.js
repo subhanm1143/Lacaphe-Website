@@ -7,7 +7,7 @@ function connectToDatabase() {
   con = mysql.createConnection({
 
     host: "localhost",
-    user: "root",
+    user: "liberio",
     password: "DemBoys"
 
   });
@@ -54,6 +54,14 @@ function createDrinkTable(){
   })
   populateDrinktable();
 }
+
+function populateReviewTable() {
+  var insertReviews = "INSERT INTO Reviews(review_text) VALUES ('review'), ('review2'), ('review3'), ('review4'), ('review5'), ('review6');";
+  con.query(insertReviews, function (err) {
+    if (err) throw err;
+    console.log("Test table filled");
+  })
+}
 function createReviewTable(){
 
   var tablesql = "CREATE TABLE Reviews(id INT AUTO_INCREMENT PRIMARY KEY, review_text TEXT)";
@@ -61,7 +69,7 @@ function createReviewTable(){
     if (err) throw err;
     console.log("Review table created");
   })
- // populateReviewTable(); // You should define this function to populate the Reviews table with initial data
+  // populateReviewTable(); // You should define this function to populate the Reviews table with initial data
 }
 function createUserLoginTable(){
 
